@@ -234,6 +234,9 @@ models = [('Ridge Regression', mae_ridge, mse_ridge, rmse_ridge, r2_score_ridge_
 predict = pd.DataFrame(data = models, columns=['Model', 'MAE', 'MSE', 'RMSE', 'R2_Score(training)', 'R2_Score(test)', 'Cross-Validation'])
 predict
 
+# Result: Table 2 in Paper  
+
+''' Extra '''
 # RMSE bar graph
 
 predict.sort_values(by=['RMSE'], ascending=False, inplace=True)
