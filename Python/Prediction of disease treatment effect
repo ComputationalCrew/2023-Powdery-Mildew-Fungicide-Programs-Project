@@ -131,3 +131,5 @@ ax=data_wide.plot.kde(figsize = (8, 6),
 ax.set_xlabel("Prediction of disease treatment effect")
 
 plt.savefig("1.png", dpi=1000)
+
+# Results: Figure 4 and Supplemental Figure 2 in Paper
