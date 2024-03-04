@@ -60,3 +60,5 @@ plt.bar(range(X_train.shape[1]), importances[sorted_indices], align='center')
 plt.xticks(range(X_train.shape[1]), X_train.columns[sorted_indices], rotation=90)
 plt.tight_layout()
 plt.show()
+
+# Result: Table 1 in Paper
