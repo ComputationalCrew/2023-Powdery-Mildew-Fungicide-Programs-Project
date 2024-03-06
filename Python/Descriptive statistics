@@ -1,4 +1,4 @@
-''' Descriptive statistics: Mean and SD, t-test '''
+''' Descriptive statistics: Mean and SD, t-test, histogram for CATE '''
 
 import pandas as pd
 import numpy as np
@@ -36,3 +36,21 @@ t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
 print('t-statistic:', t_statistic)
 print('p-value:', p_value)
 print('Degrees of Freedom:', df)
+
+
+# Histogram
+
+import numpy as np
+from matplotlib import pyplot as plt
+
+df = pd.read_csv('.../raw_prediction.csv')
+
+plt.rcParams["figure.figsize"] = [5, 7]
+sns.set(font_scale=10)
+
+sns.set(style="whitegrid")
+plt.hist(df['predictions'])
+plt.title('CATE estimate')
+plt.xlabel('Annual cost predictions')
+plt.ylabel('Count')
+plt.savefig("1.png", dpi=1000)
