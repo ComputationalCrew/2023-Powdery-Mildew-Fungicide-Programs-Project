@@ -1,0 +1,18 @@
+''' Histogram for CATE '''
+
+import numpy as np
+from matplotlib import pyplot as plt
+
+df = pd.read_csv('.../raw_prediction.csv')
+
+plt.rcParams["figure.figsize"] = [5, 7]
+sns.set(font_scale=10)
+
+sns.set(style="whitegrid")
+plt.hist(df['predictions'])
+plt.title('CATE estimate')
+plt.xlabel('Annual cost predictions')
+plt.ylabel('Count')
+plt.savefig("1.png", dpi=1000)
+
+# Result: Figure 1 in Paper
