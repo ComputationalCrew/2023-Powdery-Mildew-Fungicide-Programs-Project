@@ -1,0 +1,23 @@
+''' Generalized propensity score '''
+
+# libraries
+import seaborn as sns
+import matplotlib.pyplot as plt
+from plotnine.data import diamonds # dataset
+
+# Data
+df = pd.read_csv('.../Clean Data_Random Forest_6GPS_YealyCost.csv')
+
+# Set figure size for the notebook
+plt.rcParams["figure.figsize"]=12,8
+
+# Density plot
+b = sns.kdeplot(data=df, x="GPS", hue="Mildew Incidence_Dummy", cut=0, fill = True, multiple="stack",
+    cumulative=False, common_norm=False, common_grid=True, alpha=1)
+sns.move_legend(b, "lower center", 
+                bbox_to_anchor=(.5, 1), 
+                ncol=5, title="Generalized propensity score by mildew incidence occurrence", frameon=False)
+plt.tight_layout()
+plt.rc('figure', titlesize=50) 
+plt.rc('axes', labelsize=20)
+plt.savefig("1.png", dpi=1000)
