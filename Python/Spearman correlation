@@ -1,6 +1,10 @@
+''' Spearman correlation '''
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy.stats import pearsonr
+
+# Data
 
 data = pd.read_csv('.../Clean Data_Random Forest_61.csv')
 
