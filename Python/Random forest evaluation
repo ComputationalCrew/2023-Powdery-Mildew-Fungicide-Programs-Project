@@ -28,6 +28,7 @@ from collections import Counter
 from IPython.core.display import display, HTML
 sns.set_style('darkgrid')
 
+# Data
 dataset = pd.read_csv('.../Clean Data_Random Forest_3.csv')
 
 features = ['Mildew_Apr','Mildew_May','Mildew_Jun','Mildew_Jul', 'Mildew Incidence_Dummy', 
