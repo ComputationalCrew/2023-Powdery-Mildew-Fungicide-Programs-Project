@@ -1,0 +1,38 @@
+''' Descriptive statistics: Mean and SD, t-test '''
+
+import pandas as pd
+import numpy as np
+from quantulum3 import parser
+import re
+import matplotlib.pyplot as plt
+from pyproj import Geod
+import statsmodels.api as sm
+import seaborn as sns
+import warnings
+warnings.filterwarnings('ignore')
+
+data = pd.read_csv('.../Clean Data_Random Forest_61.csv')
+
+descriptive = data.describe().T
+
+descriptive_MI_mean = data.groupby('Mildew Incidence_Dummy').mean().T
+descriptive_MI_std = data.groupby('Mildew Incidence_Dummy').std().T
+
+# Need to be revised
+
+Mildew Incidence_NoExper = data.query('Mildew Incidence_Dummy == 0')
+Mildew Incidence_Exper = data.query('Mildew Incidence_Dummy == 1')
+
+a = data.query('Year == 2014')
+b = data.query('Year == 2015')
+
+#define samples
+group1 = a['Pruning']
+group2 = b['Pruning']
+
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+
+print('t-statistic:', t_statistic)
+print('p-value:', p_value)
+print('Degrees of Freedom:', df)
