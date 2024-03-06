@@ -1,8 +1,10 @@
 ''' Histogram for CATE '''
 
+# libraries
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Data
 df = pd.read_csv('.../raw_prediction.csv')
 
 plt.rcParams["figure.figsize"] = [5, 7]
