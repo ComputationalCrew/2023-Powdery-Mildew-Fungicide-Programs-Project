@@ -21,7 +21,6 @@ Initial_Strain = data['Initial Strain']
 Degree_centrality_nonR6cultivars_MayJune = data['degree_centrality_NonR6_MayJun']
 Degree_centrality_nonR6cultivars_JunJul = data['degree_centrality_NonR6_JunJul']
 
-
 df = pd.DataFrame({'Annual Cost': TotalCost,
                    'Active Constituents': YearlyConstituent,
                    'Mean incidence of diseased plants': Mean_incidence_of_diseased_plants,
