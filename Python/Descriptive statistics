@@ -14,9 +14,7 @@ warnings.filterwarnings('ignore')
 
 # Data
 data = pd.read_csv('.../Clean Data_Random Forest_61.csv')
-
 descriptive = data.describe().T
-
 descriptive_MI_mean = data.groupby('Mildew Incidence_Dummy').mean().T
 descriptive_MI_std = data.groupby('Mildew Incidence_Dummy').std().T
 
@@ -34,7 +32,6 @@ group2 = b['Pruning']
 
 # Perform t-test
 t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
-
 print('t-statistic:', t_statistic)
 print('p-value:', p_value)
 print('Degrees of Freedom:', df)
