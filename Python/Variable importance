@@ -1,22 +1,22 @@
 ''' Variable importance '''
 
+# libraries
 from sklearn.ensemble import RandomForestRegressor
+import numpy as np
+import matplotlib.pyplot as plt
 
+# Data
 dataset = pd.read_csv('.../Clean Data_Random Forest_3.csv')
 
 # When response variable is annual costs,
-
 forest = RandomForestRegressor(n_estimators = 100, min_samples_split = 10, min_samples_leaf= 3, max_features = 'auto', max_depth= 10, bootstrap=True) 
 forest.fit(X_train, y_train) 
 
 # When response variable is active ingredients,
-
 forest = RandomForestRegressor(n_estimators = 20, min_samples_split = 6, min_samples_leaf= 4, max_features = 'auto', max_depth= 30, bootstrap=True) 
 forest.fit(X_train, y_train) 
 
 # Determine feature importance values
-
-import numpy as np 
 importances = forest.feature_importances_
 
 
@@ -53,8 +53,6 @@ for f in range(X_train.shape[1]):
 
 # Visualize the feature importance
 
-import matplotlib.pyplot as plt
- 
 plt.title('Feature Importance')
 plt.bar(range(X_train.shape[1]), importances[sorted_indices], align='center')
 plt.xticks(range(X_train.shape[1]), X_train.columns[sorted_indices], rotation=90)
