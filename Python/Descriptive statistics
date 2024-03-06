@@ -1,5 +1,6 @@
 ''' Descriptive statistics: Mean and SD, t-test  '''
 
+# libraries
 import pandas as pd
 import numpy as np
 from quantulum3 import parser
@@ -11,6 +12,7 @@ import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
+# Data
 data = pd.read_csv('.../Clean Data_Random Forest_61.csv')
 
 descriptive = data.describe().T
