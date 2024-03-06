@@ -15,64 +15,44 @@ data = pd.read_csv('.../data_YearlyCost63.csv')
 # Yearly Con
 data = pd.read_csv('.../data_YearlyConstituents61.csv')
 
-
 # set a white background  
 sns.set(style="whitegrid")
 
 # Susceptibility to R6 Strains
-# Converting to wide dataframe
 data_wide = data.pivot(columns ='Susceptibility to R6 strains',
                      values = 'Prediction')
-  
-# plotting multiple density plot
 ax= data_wide.plot.kde(figsize = (8, 6),  
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-
 plt.savefig("1.png", dpi=1000)
 
 # Susceptibility to nonR6 Strains
-# Converting to wide dataframe
 data_wide = data.pivot(columns ='Susceptibility to nonR6 strains',
                      values = 'Prediction')
-  
-# plotting multiple density plot
 ax= data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-
 plt.savefig("1.png", dpi=1000)
 
 # Initial Strain
-
 data_wide = data.pivot(columns ='Initial strain',
-                     values = 'Prediction')
-  
-# plotting multiple density plot
+                     values = 'Prediction')  
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-
 plt.savefig("1.png", dpi=1000)
 
-# pruning
- 
+# pruning 
 data_wide = data.pivot(columns ='Pruning thoroughness',
                      values = 'Prediction')
-  
-# plotting multiple density plot
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-
 plt.savefig("1.png", dpi=1000)
 
-# degree_centrality_NonR6_MayJun
- 
+# degree_centrality_NonR6_MayJun 
 data_wide = data.pivot(columns ='degree centrality NonR6 MayJune',
-                     values = 'Prediction')
-  
-# plotting multiple density plot
+                     values = 'Prediction')  
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
@@ -82,54 +62,39 @@ plt.savefig("1.png", dpi=1000)
 # degree_centrality_NonR6_JunJul
 data_wide = data.pivot(columns ='degree centrality NonR6 JuneJuly',
                      values = 'Prediction')
-  
-# plotting multiple density plot
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
 
 plt.savefig("1.png", dpi=1000)
 
-
 # Grower
 data_wide = data.pivot(columns ='Grower',
                      values = 'Prediction')
-  
-# plotting multiple density plot
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-
 plt.savefig("1.png", dpi=1000)
 
 # Year
 data_wide = data.pivot(columns ='Year',
                      values = 'Prediction')
-  
-# plotting multiple density plot
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-
 plt.savefig("1.png", dpi=1000)
 
 
-# Quadrant
+# Data for Quadrant
 data = pd.read_csv('.../data_YearlyCost62.csv')
-
 data = pd.read_csv('.../data_YearlyConstituents62.csv')
 
-
-# Quadrant
+# density plot
 data_wide = data.pivot(columns ='Quadrant',
                      values = 'Prediction')
-  
-# plotting multiple density plot
-
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-
 plt.savefig("1.png", dpi=1000)
 
 # Results: Figure 4 and Supplemental Figure 2 in Paper
