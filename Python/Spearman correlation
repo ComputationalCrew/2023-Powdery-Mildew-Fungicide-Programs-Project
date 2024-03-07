@@ -36,6 +36,7 @@ df = pd.DataFrame({'Annual Cost': TotalCost,
 corr = df.corr(method = 'spearman')
 fig, ax = plt.subplots(figsize=(10,10)) 
 sns.heatmap(corr, annot = True, fmt=".2f")
+fig.autofmt_xdate(rotation=45)
 plt.show()
 
 # All variables
@@ -79,6 +80,7 @@ df = pd.DataFrame({'Annual Cost': TotalCost,
 corr = df.corr(method = 'spearman')
 fig, ax = plt.subplots(figsize=(10,10)) 
 sns.heatmap(corr, annot = True, fmt=".2f")
+fig.autofmt_xdate(rotation=45)
 plt.show()
 
 # Result: Figure 3 in Paper (For selected variables)
