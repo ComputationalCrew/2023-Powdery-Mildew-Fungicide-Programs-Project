@@ -1,0 +1,81 @@
+''' Generalized Random Forest '''
+
+library(grf)
+library(rpart)
+library(policytree)
+library(psych)
+set.seed(123)
+library(ggplot2)
+
+# Read in data
+data <- read.csv(".../Clean Data_Random Forest_V1.csv")
+n <- nrow(data)
+describe(data)
+
+# Covariates
+covariates <- c("Mildew_Apr_Dummy", "FlagShoot_Incidence", "Mildew_Jun_Dummy", "Mildew_Jul_Dummy",
+                 "Susceptibility_to_R6_Strains", "Susceptibility_to_nonR6_Strains", 
+                 "Initial_Strain",  "Pruning", "Grower_1","Grower_2","Grower_3","Grower_4", 
+                 "Grower_5","Grower_6","Grower_7", "Grower_8","Grower_9", 
+                 "degree_centrality_R6_MayJun", "degree_centrality_NonR6_MayJun", 
+                 "degree_centrality_R6_JunJul", "degree_centrality_NonR6_JunJul",
+                 "YearDummy_2014","YearDummy_2015","YearDummy_2016","YearDummy_2017",
+                 "NE","NW","SW","SE")
+
+
+Y = data$Annual_Cost
+D = data$Mildew_Incidence
+Z = data$Mildew_May_Dummy
+
+X2 = data[ ,covariates]
+X2.2 <- model.matrix(~., X2)
+
+Y = data$Active_Constituents
+
+iv.forest <- instrumental_forest(X = X2.2,
+                         Y = Y,
+                         W = D,
+                         Z = Z,
+                         Y.hat = NULL,
+                         W.hat = NULL,
+                         Z.hat = NULL,
+                         num.trees = 2000,
+                         sample.weights = NULL,
+                         clusters = NULL,
+                         equalize.cluster.weights = FALSE,
+                         sample.fraction = 0.5,
+                         mtry = min(ceiling(sqrt(ncol(X2.2)) + 20), ncol(X2.2)),
+                         min.node.size = 5,
+                         honesty = TRUE,
+                         honesty.fraction = 0.5,
+                         honesty.prune.leaves = TRUE,
+                         alpha = 0.05,
+                         imbalance.penalty = 0,
+                         stabilize.splits = TRUE,
+                         ci.group.size = 2,
+                         reduced.form.weight = 0,
+                         tune.parameters = "none",
+                         tune.num.trees = 200,
+                         tune.num.reps = 50,
+                         tune.num.draws = 1000,
+                         compute.oob.predictions = TRUE,
+                         num.threads = NULL,
+                         seed = runif(1, 0, .Machine$integer.max))
+
+round(average_treatment_effect(iv.forest, target.sample="all"),2)
+t <- round(average_treatment_effect(iv.forest, target.sample="all"),2)
+predictions <- iv.forest$predictions
+
+''' Table 1: Variable importance '''
+# Variable importance
+forest.Y.varimp <- variable_importance(iv.forest)
+forest.Y.varimp
+
+# Selected Variable
+selected.vars <- which(forest.Y.varimp / mean(forest.Y.varimp) > 0.5)
+selected.vars_list <- colnames(X2.2)[selected.vars]
+selected.vars_list
+
+''' Figure 1: Histogram for CATE (If you want higher resolution, you may use Python code.)'''
+# Histogram for CATE
+hist(predictions, main="CATE estimates", freq=F, las=1, col = "grey")
