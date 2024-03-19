@@ -15,13 +15,13 @@ warnings.filterwarnings('ignore')
 # Data
 data = pd.read_csv('.../Clean Data_Random Forest_61.csv')
 
-# Table 1_Mean and SD
+# Table 1: Mean and SD
 
 descriptive = data.describe().T
 descriptive_MI_mean = data.groupby('Mildew Incidence_Dummy').mean().T
 descriptive_MI_std = data.groupby('Mildew Incidence_Dummy').std().T
 
-'''  Table 1_t value '''
+'''  Table 1: t value '''
 
 import statsmodels.api as sm
 
@@ -121,7 +121,7 @@ sns.violinplot(x="Month", y="Monthly Constituents", hue="Year", order = ['March'
 plt.savefig("1.png", dpi=1000)
 
 
-# 3.2 Spearman correlations
+# Figure 3 and Supp. Figure 1: Spearman correlations
 from scipy.stats import pearsonr
 
 # Selected Variable
