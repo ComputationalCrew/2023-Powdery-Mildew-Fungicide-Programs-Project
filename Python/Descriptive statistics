@@ -15,7 +15,7 @@ warnings.filterwarnings('ignore')
 # Data
 data = pd.read_csv('.../Clean Data_Random Forest_61.csv')
 
-# Table 1: Mean and SD
+""" Table 1: Mean and SD """
 
 descriptive = data.describe().T
 descriptive_MI_mean = data.groupby('Mildew Incidence_Dummy').mean().T
@@ -110,7 +110,8 @@ print('t-statistic:', t_statistic)
 print('p-value:', "%.4f" % p_value)
 print('Degrees of Freedom:', df)
 
-# Figure 2. Violin Plot
+""" Figure 2. Violin Plot """
+
 sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
 plt.savefig("1.png", dpi=1000)
 sns.violinplot(x="Year", y="Annual_Cost", data=data, palette="Pastel1")
@@ -121,7 +122,8 @@ sns.violinplot(x="Month", y="Monthly Constituents", hue="Year", order = ['March'
 plt.savefig("1.png", dpi=1000)
 
 
-# Figure 3 and Supp. Figure 1: Spearman correlations
+""" Figure 3 and Supp. Figure 1: Spearman correlations """
+
 from scipy.stats import pearsonr
 
 # Selected Variable
