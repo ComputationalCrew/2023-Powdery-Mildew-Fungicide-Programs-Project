@@ -79,3 +79,86 @@ selected.vars_list
 ''' Figure 1: Histogram for CATE(If you want higher resolution, you may use Python code.) '''
 # Histogram for CATE
 hist(predictions, main="CATE estimates", freq=F, las=1, col = "grey")
+
+''' Table 4: ATE by Covariates '''
+
+# Create CATEs table
+cates <- data.frame(var = rep(NA, 39), level = NA, cate = NA, se = NA)
+cates[1, ]<- c("Susceptibility", "R6=0", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_R6_Strains == 0)))
+cates[2, ]<- c("Susceptibility", "R6=1", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_R6_Strains == 1)))
+cates[3, ]<- c("Susceptibility", "R6=2", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_R6_Strains == 2)))
+cates[4, ]<- c("Susceptibility", "R6=3", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_R6_Strains == 3)))
+cates[5, ]<- c("Susceptibility", "R6=4", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_R6_Strains == 4)))
+cates[6, ]<- c("Susceptibility", "R6=5", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_R6_Strains == 5)))
+cates[7, ]<- c("Susceptibility", "nonR6=0", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_nonR6_Strains == 0)))
+cates[8, ]<- c("Susceptibility", "nonR6=1", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_nonR6_Strains == 1)))
+cates[9, ]<- c("Susceptibility", "nonR6=2", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_nonR6_Strains == 2)))
+cates[10, ]<- c("Susceptibility", "nonR6=3", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_nonR6_Strains == 3)))
+cates[11, ]<- c("Susceptibility", "nonR6=4", 
+               average_treatment_effect(iv.forest, subset = (data$Susceptibility_to_nonR6_Strains == 4)))
+cates[12, ]<- c("Initial Strain", "InitialStrain=0", 
+               average_treatment_effect(iv.forest, subset = (data$Initial_Strain == 0)))
+cates[13, ]<- c("Initial Strain", "InitialStrain=1", 
+               average_treatment_effect(iv.forest, subset = (data$Initial_Strain == 1)))
+cates[14, ]<- c("Initial Strain", "InitialStrain=2", 
+               average_treatment_effect(iv.forest, subset = (data$Initial_Strain == 2)))
+cates[15, ]<- c("Pruning", "Pruning=1", 
+               average_treatment_effect(iv.forest, subset = (data$Pruning == 1)))
+cates[16, ]<- c("Pruning", "Pruning=2", 
+               average_treatment_effect(iv.forest, subset = (data$Pruning == 2)))
+cates[17, ]<- c("Pruning", "Pruning=3", 
+               average_treatment_effect(iv.forest, subset = (data$Pruning == 3)))
+cates[18, ]<- c("Pruning", "Pruning=4", 
+               average_treatment_effect(iv.forest, subset = (data$Pruning == 4)))
+cates[19, ]<- c("Pruning", "Pruning=5", 
+               average_treatment_effect(iv.forest, subset = (data$Pruning == 5)))
+cates[20, ]<- c("degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_MayJun = 0", 
+                average_treatment_effect(iv.forest, subset = (data$degree_centrality_NonR6_MayJun == 0)))
+cates[21, ]<- c("degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_MayJun = 1", 
+                average_treatment_effect(iv.forest, subset = (data$degree_centrality_NonR6_MayJun == 1)))
+cates[22, ]<- c("degree_centrality_NonR6_JunJul", "degree_centrality_NonR6_JunJul = 0", 
+                average_treatment_effect(iv.forest, subset = (data$degree_centrality_NonR6_JunJul == 0)))
+cates[23, ]<- c("degree_centrality_NonR6_JunJul", "degree_centrality_NonR6_JunJul = 1", 
+                average_treatment_effect(iv.forest, subset = (data$degree_centrality_NonR6_JunJul == 1)))
+cates[24, ]<- c("Direction", "NE",
+                average_treatment_effect(iv.forest, subset = (data$NE == 1)))
+cates[25, ]<- c("Direction", "NW",
+                average_treatment_effect(iv.forest, subset = (data$NW == 1)))
+cates[26, ]<- c("Direction", "SE", 
+                average_treatment_effect(iv.forest, subset = (data$SE == 1)))
+cates[27, ]<- c("Grower", "Grower_1",
+                average_treatment_effect(iv.forest, subset = (data$Grower_1 == 1)))
+cates[28, ]<- c("Grower",  "Grower_2", 
+                average_treatment_effect(iv.forest, subset = (data$Grower_2 == 1)))
+cates[29, ]<- c("Grower",  "Grower_3", 
+                average_treatment_effect(iv.forest, subset = (data$Grower_3 == 1)))
+cates[30, ]<- c("Grower",  "Grower_4", 
+                average_treatment_effect(iv.forest, subset = (data$Grower_4 == 1)))
+cates[31, ]<- c("Grower", "Grower_5",  
+                average_treatment_effect(iv.forest, subset = (data$Grower_5 == 1)))
+cates[32, ]<- c("Grower", "Grower_6",
+                average_treatment_effect(iv.forest, subset = (data$Grower_6 == 1)))
+cates[33, ]<- c("Grower",  "Grower_7",
+                average_treatment_effect(iv.forest, subset = (data$Grower_7 == 1)))
+cates[34, ]<- c("Grower", "Grower_8",
+                average_treatment_effect(iv.forest, subset = (data$Grower_8 == 1)))
+cates[35, ]<- c("Grower", "Grower_9r",
+                average_treatment_effect(iv.forest, subset = (data$Grower_9 == 1)))
+cates[36, ]<- c("Year", "2014", 
+                average_treatment_effect(iv.forest, subset = (data$YearDummy_2014 == 1)))
+cates[37, ]<- c("Year", "2015", 
+                average_treatment_effect(iv.forest, subset = (data$YearDummy_2015 == 1)))
+cates[38, ]<- c("Year", "2016", 
+                average_treatment_effect(iv.forest, subset = (data$YearDummy_2016 == 1)))
+cates[39, ]<- c("Year", "2017", 
+                average_treatment_effect(iv.forest, subset = (data$YearDummy_2017 == 1)))
