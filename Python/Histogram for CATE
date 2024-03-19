@@ -1,4 +1,4 @@
-''' Histogram for CATE '''
+''' Figure 1: Histogram for CATE '''
 
 # libraries
 import numpy as np
@@ -16,5 +16,3 @@ plt.title('CATE estimate')
 plt.xlabel('Annual cost predictions')
 plt.ylabel('Count')
 plt.savefig("1.png", dpi=1000)
-
-# Result: Figure 1 in Paper
