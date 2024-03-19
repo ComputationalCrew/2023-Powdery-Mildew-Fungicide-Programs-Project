@@ -1,4 +1,4 @@
-''' Figure 1: Histogram for CATE '''
+''' Histogram for CATE '''
 
 # libraries
 import numpy as np
@@ -7,9 +7,9 @@ from matplotlib import pyplot as plt
 # Data
 df = pd.read_csv('.../raw_prediction.csv')
 
+''' Figure 1: Histogram for CATE '''
 plt.rcParams["figure.figsize"] = [5, 7]
 sns.set(font_scale=10)
-
 sns.set(style="whitegrid")
 plt.hist(df['predictions'])
 plt.title('CATE estimate')
