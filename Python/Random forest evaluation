@@ -49,50 +49,38 @@ y = dataset['YearlyCon']
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
-
 print("Shape of X_train: ",X_train.shape)
 print("Shape of X_test: ", X_test.shape)
 print("Shape of y_train: ",y_train.shape)
 print("Shape of y_test",y_test.shape)
 
-''' Ridge Regression '''  
-
+# Ridge Regression
 from sklearn.linear_model import Ridge
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import PolynomialFeatures
-
 steps = [
     ('scalar', StandardScaler()),
     ('poly', PolynomialFeatures(degree=3)),
     ('model', Ridge(alpha=1777, fit_intercept=True))
 ]
-
 ridge_pipe = Pipeline(steps)
 ridge_pipe.fit(X_train, y_train)
-
 from sklearn.metrics import r2_score
-
 # Predicting Cross Validation Score the Test set results
 cv_ridge = cross_val_score(estimator = ridge_pipe, X = X_train, y = y_train.ravel(), cv = 10)
-
 # Predicting R2 Score the Test set results
 y_pred_ridge_train = ridge_pipe.predict(X_train)
 r2_score_ridge_train = r2_score(y_train, y_pred_ridge_train)
-
 # Predicting R2 Score the Test set results
 y_pred_ridge_test = ridge_pipe.predict(X_test)
 r2_score_ridge_test = r2_score(y_test, y_pred_ridge_test)
-
 # Predicting MAE the Test set results
 mae_ridge = (mean_absolute_error(y_test, y_pred_ridge_test))
-
 # Predicting MSE the Test set results
 mse_ridge = (mean_squared_error(y_test, y_pred_ridge_test))
-
 # Predicting RMSE the Test set results
 rmse_ridge = (np.sqrt(mean_squared_error(y_test, y_pred_ridge_test)))
-
 print('CV: ', cv_ridge.mean())
 print('R2_score (train): ', r2_score_ridge_train)
 print('R2_score (test): ', r2_score_ridge_test)
@@ -100,44 +88,33 @@ print("MAE: ", mae_ridge)
 print("MSE: ", mse_ridge)
 print("RMSE: ", rmse_ridge)
 
-'''  Lasso Regression ''' 
-
+# Lasso Regression
 from sklearn.linear_model import Lasso
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import PolynomialFeatures
-
 steps = [
     ('scalar', StandardScaler()),
     ('poly', PolynomialFeatures(degree=3)),
     ('model', Lasso(alpha=2.36, fit_intercept=True, tol = 0.0199, max_iter=2000))
 ]
-
 lasso_pipe = Pipeline(steps)
 lasso_pipe.fit(X_train, y_train)
-
 from sklearn.metrics import r2_score
-
 # Predicting Cross Validation Score
 cv_lasso = cross_val_score(estimator = lasso_pipe, X = X_train, y = y_train, cv = 10)
-
 # Predicting R2 Score the Test set results
 y_pred_lasso_train = lasso_pipe.predict(X_train)
 r2_score_lasso_train = r2_score(y_train, y_pred_lasso_train)
-
 # Predicting R2 Score the Test set results
 y_pred_lasso_test = lasso_pipe.predict(X_test)
 r2_score_lasso_test = r2_score(y_test, y_pred_lasso_test)
-
 # Predicting MAE the Test set results
 mae_lasso = (mean_absolute_error(y_test, y_pred_lasso_test))
-
 # Predicting MSE the Test set results
 mse_lasso = (mean_squared_error(y_test, y_pred_lasso_test))
-
 # Predicting RMSE the Test set results
 rmse_lasso = (np.sqrt(mean_squared_error(y_test, y_pred_lasso_test)))
-
 print('CV: ', cv_lasso.mean())
 print('R2_score (train): ', r2_score_lasso_train)
 print('R2_score (test): ', r2_score_lasso_test)
@@ -146,35 +123,26 @@ print("MSE: ", mse_lasso)
 print("RMSE: ", rmse_lasso)
 
 
-''' Decision Tree Regression ''' 
-
+# Decision Tree Regression
 # Fitting the Decision Tree Regression Model to the dataset
 from sklearn.tree import DecisionTreeRegressor
 regressor_dt = DecisionTreeRegressor(random_state = 0)
 regressor_dt.fit(X_train, y_train)
-
 from sklearn.metrics import r2_score
-
 # Predicting Cross Validation Score
 cv_dt = cross_val_score(estimator = regressor_dt, X = X_train, y = y_train, cv = 10)
-
 # Predicting R2 Score the Train set results
 y_pred_dt_train = regressor_dt.predict(X_train)
 r2_score_dt_train = r2_score(y_train, y_pred_dt_train)
-
 # Predicting R2 Score the Test set results
 y_pred_dt_test = regressor_dt.predict(X_test)
 r2_score_dt_test = r2_score(y_test, y_pred_dt_test)
-
 # Predicting MAE the Test set results
 mae_dt = (mean_absolute_error(y_test, y_pred_dt_test))
-
 # Predicting MSE the Test set results
 mse_dt = (mean_squared_error(y_test, y_pred_dt_test))
-
 # Predicting RMSE the Test set results
 rmse_dt = (np.sqrt(mean_squared_error(y_test, y_pred_dt_test)))
-
 print('CV: ', cv_dt.mean())
 print('R2_score (train): ', r2_score_dt_train)
 print('R2_score (test): ', r2_score_dt_test)
@@ -182,41 +150,30 @@ print("MAE: ", mae_dt)
 print("MSE: ", mse_dt)
 print("RMSE: ", rmse_dt)
 
-''' Random Forest Regression '''
-
+# Random Forest Regression
 # Fitting the Random Forest Regression to the dataset
 from sklearn.ensemble import RandomForestRegressor
 regressor_rf = RandomForestRegressor(n_estimators = 100, random_state = 0)
 regressor_rf.fit(X_train, y_train.ravel())
-
 from sklearn.metrics import r2_score
-
 y_pred = rf.predict(X_test)
-
 # Predicting Cross Validation Score
 cv_rf = cross_val_score(estimator = regressor_rf, X = X_train, y = y_train.ravel(), cv = 10)
-
 # Predicting R2 Score the Train set results
 y_pred_rf_train = regressor_rf.predict(X_train)
 r2_score_rf_train = r2_score(y_train, y_pred_rf_train)
-
 print('Mean Absolute Error:', mean_absolute_error(y_test, y_pred))
 print('Mean Squared Error:', mean_squared_error(y_test, y_pred))
 print('Root Mean Squared Error:', np.sqrt(mean_squared_error(y_test, y_pred)))
-
 # Predicting R2 Score the Test set results
 y_pred_rf_test = regressor_rf.predict(X_test)
 r2_score_rf_test = r2_score(y_test, y_pred_rf_test)
-
 # Predicting RMSE the Test set results
 rmse_rf = (np.sqrt(mean_squared_error(y_test, y_pred_rf_test)))
-
 # Predicting MAE the Test set results
 mae_rf = (mean_absolute_error(y_test, y_pred_rf_test))
-
 # Predicting MSE the Test set results
 mse_rf = (mean_squared_error(y_test, y_pred_rf_test))
-
 print('CV: ', cv_rf.mean())
 print('R2_score (train): ', r2_score_rf_train)
 print('R2_score (test): ', r2_score_rf_test)
@@ -224,24 +181,20 @@ print("MAE: ", mae_rf)
 print("MSE: ", mse_rf)
 print("RMSE: ", rmse_rf)
 
-''' Measuring the error ''' 
-
+# Measuring the error
 models = [('Ridge Regression', mae_ridge, mse_ridge, rmse_ridge, r2_score_ridge_train, r2_score_ridge_test, cv_ridge.mean()),
           ('Lasso Regression', mae_lasso, mse_lasso, rmse_lasso, r2_score_lasso_train, r2_score_lasso_test, cv_lasso.mean()),
           ('Decision Tree Regression', mae_dt, mse_dt, rmse_dt, r2_score_dt_train, r2_score_dt_test, cv_dt.mean()),
-          ('Random Forest Regression', mae_rf, mse_rf, rmse_rf, r2_score_rf_train, r2_score_rf_test, cv_rf.mean())   
-         ]
+          ('Random Forest Regression', mae_rf, mse_rf, rmse_rf, r2_score_rf_train, r2_score_rf_test, cv_rf.mean())]       
+
+""" Result: Table 2: Predictive accuracy of selected machine learning regression models """
 
 predict = pd.DataFrame(data = models, columns=['Model', 'MAE', 'MSE', 'RMSE', 'R2_Score(training)', 'R2_Score(test)', 'Cross-Validation'])
 predict
 
-# Result: Table 2 in Paper  
-
 ''' Extra '''
 # RMSE bar graph
-
 predict.sort_values(by=['RMSE'], ascending=False, inplace=True)
-
 f, axe = plt.subplots(1,1, figsize=(18,6))
 sns.barplot(x='Model', y='RMSE', data=predict, ax = axe)
 axe.set_xlabel('Model', size=16)
