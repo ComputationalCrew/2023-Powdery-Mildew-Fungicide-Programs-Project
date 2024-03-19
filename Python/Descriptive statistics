@@ -14,24 +14,179 @@ warnings.filterwarnings('ignore')
 
 # Data
 data = pd.read_csv('.../Clean Data_Random Forest_61.csv')
+
+# Table 1_Mean and SD
+
 descriptive = data.describe().T
 descriptive_MI_mean = data.groupby('Mildew Incidence_Dummy').mean().T
 descriptive_MI_std = data.groupby('Mildew Incidence_Dummy').std().T
 
-# Need to be revised
+'''  Table 1_t value '''
 
-Mildew Incidence_NoExper = data.query('Mildew Incidence_Dummy == 0')
-Mildew Incidence_Exper = data.query('Mildew Incidence_Dummy == 1')
+import statsmodels.api as sm
 
-a = data.query('Year == 2014')
-b = data.query('Year == 2015')
+# define samples
+a = data.query('Mildew_Incidence_Dummy == 1')
+b = data.query('Mildew_Incidence_Dummy == 0')
 
-#define samples
-group1 = a['Pruning']
-group2 = b['Pruning']
-
+# Mean incidence of diseased plants 
+group1 = a['Mildew_Incidence']
+group2 = b['Mildew_Incidence']
 # Perform t-test
 t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
 print('t-statistic:', t_statistic)
-print('p-value:', p_value)
+print('p-value:', "%.4f" % p_value)
 print('Degrees of Freedom:', df)
+
+# Pruning thoroughness 
+group1 = a['Pruning']
+group2 = b['Pruning']
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+print('t-statistic:', t_statistic)
+print('p-value:', "%.4f" % p_value)
+print('Degrees of Freedom:', df)
+
+# Susceptibility to V6-virulent strains  
+group1 = a['Susceptibility_to_R6_Strains']
+group2 = b['Susceptibility_to_R6_Strains']
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+print('t-statistic:', t_statistic)
+print('p-value:', "%.4f" % p_value)
+print('Degrees of Freedom:', df)
+
+# Susceptibility to non-V6-virulent strains  
+group1 = a['Susceptibility_to_nonR6_Strains']
+group2 = b['Susceptibility_to_nonR6_Strains']
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+print('t-statistic:', t_statistic)
+print('p-value:', "%.4f" % p_value)
+print('Degrees of Freedom:', df)
+
+# Degree centrality non-R6-cultivars May-June  
+group1 = a['degree_centrality_NonR6_MayJun']
+group2 = b['degree_centrality_NonR6_MayJun']
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+print('t-statistic:', t_statistic)
+print('p-value:', "%.4f" % p_value)
+print('Degrees of Freedom:', df)
+
+# Degree centrality non-R6-cultivars June-July  
+group1 = a['degree_centrality_NonR6_JunJul']
+group2 = b['degree_centrality_NonR6_JunJul']
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+print('t-statistic:', t_statistic)
+print('p-value:', "%.4f" % p_value)
+print('Degrees of Freedom:', df)
+
+# Initial strain V6-virulent  
+group1 = a['Initial_Strain']
+group2 = b['Initial_Strain']
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+print('t-statistic:', t_statistic)
+print('p-value:', "%.4f" % p_value)
+print('Degrees of Freedom:', df)
+
+# Active constituents   
+group1 = a['Active_Constituents']
+group2 = b['Active_Constituents']
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+print('t-statistic:', t_statistic)
+print('p-value:', "%.4f" % p_value)
+print('Degrees of Freedom:', df)
+
+# Annual cost
+group1 = a['Annual_Cost']
+group2 = b['Annual_Cost']
+# Perform t-test
+t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
+print('t-statistic:', t_statistic)
+print('p-value:', "%.4f" % p_value)
+print('Degrees of Freedom:', df)
+
+# Figure 2. Violin Plot
+sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
+plt.savefig("1.png", dpi=1000)
+sns.violinplot(x="Year", y="Annual_Cost", data=data, palette="Pastel1")
+plt.savefig("1.png", dpi=1000)
+sns.violinplot(x="Month", y="Monthly_Cost", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
+plt.savefig("1.png", dpi=1000)
+sns.violinplot(x="Month", y="Monthly Constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
+plt.savefig("1.png", dpi=1000)
+
+
+# 3.2 Spearman correlations
+from scipy.stats import pearsonr
+
+# Selected Variable
+TotalCost = data['Annual_Cost']
+YearlyConstituent = data['Active_Constituents']
+Mean_incidence_of_diseased_plants = data['Mildew_Incidence']
+Mean_incidence_of_diseased_plants_May = data['Mildew_May']
+Susceptibility_to_R6virulent_isolates = data['Susceptibility_to_R6_Strains']
+Susceptibility_to_nonR6virulent_isolates = data['Susceptibility_to_nonR6_Strains']
+Pruning_thoroughness = data['Pruning']
+Initial_Strain = data['Initial_Strain']
+Degree_centrality_nonR6cultivars_MayJune = data['degree_centrality_NonR6_MayJun']
+Degree_centrality_nonR6cultivars_JunJul = data['degree_centrality_NonR6_JunJul']
+df = pd.DataFrame({'Annual Cost': TotalCost,
+                   'Active Constituents': YearlyConstituent,
+                   'Mean incidence of diseased plants': Mean_incidence_of_diseased_plants,
+                   'Mean incidence of diseased plants May': Mean_incidence_of_diseased_plants_May,
+                   'Susceptibility to R6-virulent isolates': Susceptibility_to_R6virulent_isolates,
+                   'Susceptibility to non-R6-virulent isolates': Susceptibility_to_nonR6virulent_isolates,
+                   'Pruning thoroughness': Pruning_thoroughness,
+                   'Initial Strain': Initial_Strain,
+                   'Degree centrality non-R6-cultivars May-June': Degree_centrality_nonR6cultivars_MayJune,
+                   'Degree centrality non-R6-cultivars June-July': Degree_centrality_nonR6cultivars_JunJul})
+corr = df.corr(method = 'spearman')
+fig, ax = plt.subplots(figsize=(10,10)) 
+sns.heatmap(corr, annot = True, fmt=".2f")
+fig.autofmt_xdate(rotation=45)
+plt.show()
+
+# All input
+TotalCost = data['Annual_Cost']
+YearlyConstituent = data['Active_Constituents']
+Mean_incidence_of_diseased_plants = data['Mildew_Incidence']
+Mean_incidence_of_diseased_plants_Apr = data['Mildew_Apr']
+Mean_incidence_of_diseased_plants_May = data['Mildew_May']
+Mean_incidence_of_diseased_plants_Jun = data['Mildew_Jun']
+Mean_incidence_of_diseased_plants_Jul = data['Mildew_Jul']
+Mean_incidence_of_Flag_Shoot = data['FlagShoot_Incidence']
+Susceptibility_to_R6virulent_isolates = data['Susceptibility_to_R6_Strains']
+Susceptibility_to_nonR6_Strains_isolates = data['Susceptibility_to_nonR6_Strains']
+Pruning_thoroughness = data['Pruning']
+Initial_Strain = data['Initial_Strain']
+Degree_centrality_R6cultivars_MayJune = data['degree_centrality_R6_MayJun']
+Degree_centrality_nonR6cultivars_MayJune = data['degree_centrality_NonR6_MayJun']
+Degree_centrality_R6cultivars_JunJul = data['degree_centrality_R6_JunJul']
+Degree_centrality_nonR6cultivars_JunJul = data['degree_centrality_NonR6_JunJul']
+df = pd.DataFrame({'Annual Cost': TotalCost,
+                   'Active Constituents': YearlyConstituent,
+                   'Mean incidence of diseased plants': Mean_incidence_of_diseased_plants,
+                   'Mean incidence of diseased plants April': Mean_incidence_of_diseased_plants_Apr,
+                   'Mean incidence of diseased plants May': Mean_incidence_of_diseased_plants_May,
+                   'Mean incidence of diseased plants June': Mean_incidence_of_diseased_plants_Jun,
+                   'Mean incidence of diseased plants July': Mean_incidence_of_diseased_plants_Jul,
+                   'Mean incdence of flag Shoot': Mean_incidence_of_Flag_Shoot,
+                   'Susceptibility to R6-virulent isolates': Susceptibility_to_R6virulent_isolates,
+                   'Susceptibility to non-R6-virulent isolates': Susceptibility_to_nonR6virulent_isolates,
+                   'Pruning thoroughness': Pruning_thoroughness,
+                   'Initial Strain': Initial_Strain,
+                   'Degree centrality R6-cultivars May-June': Degree_centrality_R6cultivars_MayJune,
+                   'Degree centrality non-R6-cultivars May-June': Degree_centrality_nonR6cultivars_MayJune,
+                   'Degree centrality R6-cultivars June-July': Degree_centrality_R6cultivars_JunJul,
+                   'Degree centrality non-R6-cultivars June-July': Degree_centrality_nonR6cultivars_JunJul,
+                   })
+corr = df.corr(method = 'spearman')
+fig, ax = plt.subplots(figsize=(10,10)) 
+sns.heatmap(corr, annot = True, fmt=".2f")
+fig.autofmt_xdate(rotation=45)
+plt.show()
