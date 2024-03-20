@@ -20,4 +20,4 @@ sns.move_legend(b, "lower center",
 plt.tight_layout()
 plt.rc('figure', titlesize=50) 
 plt.rc('axes', labelsize=20)
-plt.savefig("1.png", dpi=1000)
+plt.savefig("GPS.png", dpi=1000)
