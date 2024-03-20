@@ -21,7 +21,7 @@ sns.set(style="whitegrid")
 """ Results: Figure 4 and Supplemental Figure 2 in Paper """
 
 # Susceptibility to R6 Strains
-data_wide = data.pivot(columns ='Susceptibility to R6 strains',
+data_wide = data.pivot(columns ='Susceptibility to V6 strains',
                      values = 'Prediction')
 ax= data_wide.plot.kde(figsize = (8, 6),  
                    linewidth = 4)
@@ -29,7 +29,7 @@ ax.set_xlabel("Prediction of disease treatment effect")
 plt.savefig("1.png", dpi=1000)
 
 # Susceptibility to nonR6 Strains
-data_wide = data.pivot(columns ='Susceptibility to nonR6 strains',
+data_wide = data.pivot(columns ='Susceptibility to nonV6 strains',
                      values = 'Prediction')
 ax= data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
