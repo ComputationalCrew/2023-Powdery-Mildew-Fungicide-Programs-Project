@@ -1,4 +1,4 @@
-''' Descriptive statistics: Mean and SD, t-test  '''
+### Descriptive statistics: Mean and SD, t-test 
 
 # libraries
 import pandas as pd
@@ -15,13 +15,13 @@ warnings.filterwarnings('ignore')
 # Data
 data = pd.read_csv('.../Clean Data_Random Forest_V1.csv')
 
-""" Table 1: Mean and SD """
+### Table 1: Mean and SD 
 
 descriptive = data.describe().T
-descriptive_MI_mean = data.groupby('Mildew Incidence_Dummy').mean().T
-descriptive_MI_std = data.groupby('Mildew Incidence_Dummy').std().T
+descriptive_MI_mean = data.groupby('Mildew_Incidence_Dummy').mean().T
+descriptive_MI_std = data.groupby('Mildew_Incidence_Dummy').std().T
 
-'''  Table 1: t value '''
+###  Table 1: t value
 
 import statsmodels.api as sm
 
@@ -110,24 +110,27 @@ print('t-statistic:', t_statistic)
 print('p-value:', "%.4f" % p_value)
 print('Degrees of Freedom:', df)
 
-""" Figure 2. Violin Plot """
+### Figure 2. Violin Plot
 
 sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
 plt.savefig("Year_Active_constituents.png", dpi=1000)
 sns.violinplot(x="Year", y="Annual_Cost", data=data, palette="Pastel1")
 plt.savefig("Year_Annual_cost.png", dpi=1000)
-sns.violinplot(x="Month", y="Monthly_Cost", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
+
+data = pd.read_csv('.../powdery_mildew_fungicide_record_database_ViolinPlot.csv')
+
+sns.violinplot(x="Month", y="Monthly_cost", hue="Year", order = ['March','April','May','June','July','August'], data=data1, palette="Pastel1")
 plt.savefig("Month_cost.png", dpi=1000)
-sns.violinplot(x="Month", y="Monthly Constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
+sns.violinplot(x="Month", y="Monthly_constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data1, palette="Pastel1")
 plt.savefig("Month_constituents.png", dpi=1000)
 
-''' Supp. Table 3: Mean and standard deviation (SD) of covariate variables by grower '''
+### Supp. Table 3: Mean and standard deviation (SD) of covariate variables by grower
 
 descriptive1 = data.groupby('Grower').mean()
 descriptive2 = data.groupby('Grower').std()
 
 
-""" Figure 3 and Supp. Figure 1: Spearman correlations """
+### Figure 3 and Supp. Figure 1: Spearman correlations
 
 from scipy.stats import pearsonr
 
@@ -142,14 +145,14 @@ Pruning_thoroughness = data['Pruning']
 Initial_Strain = data['Initial_Strain']
 Degree_centrality_nonR6cultivars_MayJune = data['degree_centrality_NonR6_MayJun']
 Degree_centrality_nonR6cultivars_JunJul = data['degree_centrality_NonR6_JunJul']
-df = pd.DataFrame({'Annual Cost': TotalCost,
-                   'Active Constituents': YearlyConstituent,
+df = pd.DataFrame({'Annual cost': TotalCost,
+                   'Active constituents': YearlyConstituent,
                    'Mean incidence of diseased plants': Mean_incidence_of_diseased_plants,
                    'Mean incidence of diseased plants May': Mean_incidence_of_diseased_plants_May,
                    'Susceptibility to R6-virulent isolates': Susceptibility_to_R6virulent_isolates,
                    'Susceptibility to non-R6-virulent isolates': Susceptibility_to_nonR6virulent_isolates,
                    'Pruning thoroughness': Pruning_thoroughness,
-                   'Initial Strain': Initial_Strain,
+                   'Initial strain': Initial_Strain,
                    'Degree centrality non-R6-cultivars May-June': Degree_centrality_nonR6cultivars_MayJune,
                    'Degree centrality non-R6-cultivars June-July': Degree_centrality_nonR6cultivars_JunJul})
 corr = df.corr(method = 'spearman')
@@ -175,18 +178,18 @@ Degree_centrality_R6cultivars_MayJune = data['degree_centrality_R6_MayJun']
 Degree_centrality_nonR6cultivars_MayJune = data['degree_centrality_NonR6_MayJun']
 Degree_centrality_R6cultivars_JunJul = data['degree_centrality_R6_JunJul']
 Degree_centrality_nonR6cultivars_JunJul = data['degree_centrality_NonR6_JunJul']
-df = pd.DataFrame({'Annual Cost': TotalCost,
-                   'Active Constituents': YearlyConstituent,
+df = pd.DataFrame({'Annual cost': TotalCost,
+                   'Active constituents': YearlyConstituent,
                    'Mean incidence of diseased plants': Mean_incidence_of_diseased_plants,
                    'Mean incidence of diseased plants April': Mean_incidence_of_diseased_plants_Apr,
                    'Mean incidence of diseased plants May': Mean_incidence_of_diseased_plants_May,
                    'Mean incidence of diseased plants June': Mean_incidence_of_diseased_plants_Jun,
                    'Mean incidence of diseased plants July': Mean_incidence_of_diseased_plants_Jul,
-                   'Mean incdence of flag Shoot': Mean_incidence_of_Flag_Shoot,
+                   'Mean incidence of flag Shoots': Mean_incidence_of_Flag_Shoot,
                    'Susceptibility to R6-virulent isolates': Susceptibility_to_R6virulent_isolates,
                    'Susceptibility to non-R6-virulent isolates': Susceptibility_to_nonR6virulent_isolates,
                    'Pruning thoroughness': Pruning_thoroughness,
-                   'Initial Strain': Initial_Strain,
+                   'Initial strain': Initial_Strain,
                    'Degree centrality R6-cultivars May-June': Degree_centrality_R6cultivars_MayJune,
                    'Degree centrality non-R6-cultivars May-June': Degree_centrality_nonR6cultivars_MayJune,
                    'Degree centrality R6-cultivars June-July': Degree_centrality_R6cultivars_JunJul,
