@@ -26,7 +26,7 @@ data_wide = data.pivot(columns ='Susceptibility to V6 strains',
 ax= data_wide.plot.kde(figsize = (8, 6),  
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("V6.png", dpi=1000)
 
 # Susceptibility to nonR6 Strains
 data_wide = data.pivot(columns ='Susceptibility to nonV6 strains',
@@ -34,7 +34,7 @@ data_wide = data.pivot(columns ='Susceptibility to nonV6 strains',
 ax= data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("nonV6.png", dpi=1000)
 
 # Initial Strain
 data_wide = data.pivot(columns ='Initial strain',
@@ -42,7 +42,7 @@ data_wide = data.pivot(columns ='Initial strain',
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Initialstrain.png", dpi=1000)
 
 # pruning 
 data_wide = data.pivot(columns ='Pruning thoroughness',
@@ -50,7 +50,7 @@ data_wide = data.pivot(columns ='Pruning thoroughness',
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Pruning.png", dpi=1000)
 
 # degree_centrality_NonR6_MayJun 
 data_wide = data.pivot(columns ='degree centrality NonR6 MayJune',
@@ -59,7 +59,7 @@ ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
 
-plt.savefig("1.png", dpi=1000)
+plt.savefig("degreeNonR6_MayJun.png", dpi=1000)
 
 # degree_centrality_NonR6_JunJul
 data_wide = data.pivot(columns ='degree centrality NonR6 JuneJuly',
@@ -68,7 +68,7 @@ ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
 
-plt.savefig("1.png", dpi=1000)
+plt.savefig("degreeNonR6_JunJul.png", dpi=1000)
 
 # Grower
 data_wide = data.pivot(columns ='Grower',
@@ -76,7 +76,7 @@ data_wide = data.pivot(columns ='Grower',
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Grower.png", dpi=1000)
 
 # Year
 data_wide = data.pivot(columns ='Year',
@@ -84,7 +84,7 @@ data_wide = data.pivot(columns ='Year',
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Year.png", dpi=1000)
 
 
 # Data for Quadrant
@@ -97,4 +97,4 @@ data_wide = data.pivot(columns ='Quadrant',
 ax=data_wide.plot.kde(figsize = (8, 6),
                    linewidth = 4)
 ax.set_xlabel("Prediction of disease treatment effect")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Quadrant.png", dpi=1000)
