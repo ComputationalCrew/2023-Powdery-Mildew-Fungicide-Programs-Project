@@ -1,4 +1,4 @@
-''' Exposure Response Function '''
+### Exposure Response Function
 
 # Package
 library("CausalGPS")
@@ -42,7 +42,7 @@ pseudo_pop <- generate_pseudo_pop(
   nthread = 1
   )
 
-''' Figure 5: Covariate balance plot '''
+### Figure 5: Covariate balance plot
 plot(pseudo_pop, include_details = TRUE)
 
 # Estimating GPS
@@ -61,7 +61,7 @@ data <- merge(df[, c("id", "YearlyCon", "YearlyTCost")], pseudo_pop$pseudo_pop, 
 # Merge data 
 quant <- quantile(df$T.hat, probs = c(0.1, 0.90))
 
-''' Figure 7: Causal exposure-response functions '''
+### Figure 7: Causal exposure-response functions
 # Estimate the causal exposure response function (ERF) or the exposure-response curve (ERC)
 # Annual Costs
 Annual_cost <- estimate_npmetric_erf(as.double(data$YearlyTCost),
