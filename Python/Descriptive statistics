@@ -113,13 +113,13 @@ print('Degrees of Freedom:', df)
 """ Figure 2. Violin Plot """
 
 sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Year_Active_constituents.png", dpi=1000)
 sns.violinplot(x="Year", y="Annual_Cost", data=data, palette="Pastel1")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Year_Annual_cost.png", dpi=1000)
 sns.violinplot(x="Month", y="Monthly_Cost", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Month_cost.png", dpi=1000)
 sns.violinplot(x="Month", y="Monthly Constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
-plt.savefig("1.png", dpi=1000)
+plt.savefig("Month_constituents.png", dpi=1000)
 
 ''' Supp. Table 3: Mean and standard deviation (SD) of covariate variables by grower '''
 
