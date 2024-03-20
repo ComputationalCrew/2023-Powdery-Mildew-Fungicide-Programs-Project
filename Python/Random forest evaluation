@@ -1,4 +1,4 @@
-''' Random forest evaluation '''
+### Random forest evaluation
 
 # linear algebra
 import numpy as np 
@@ -29,7 +29,7 @@ from IPython.core.display import display, HTML
 sns.set_style('darkgrid')
 
 # Data
-dataset = pd.read_csv('.../Clean Data_Random Forest_3.csv')
+dataset = pd.read_csv('.../Clean Data_Random Forest_V1.csv')
 
 features = ['Mildew_Apr','Mildew_May','Mildew_Jun','Mildew_Jul', 'Mildew Incidence_Dummy', 
             'Susceptibility to R6 Strains', 'Susceptibility to nonR6 Strains', 'Initial Strain',
@@ -187,12 +187,12 @@ models = [('Ridge Regression', mae_ridge, mse_ridge, rmse_ridge, r2_score_ridge_
           ('Decision Tree Regression', mae_dt, mse_dt, rmse_dt, r2_score_dt_train, r2_score_dt_test, cv_dt.mean()),
           ('Random Forest Regression', mae_rf, mse_rf, rmse_rf, r2_score_rf_train, r2_score_rf_test, cv_rf.mean())]       
 
-""" Result: Table 2: Predictive accuracy of selected machine learning regression models """
+### Result: Table 2: Predictive accuracy of selected machine learning regression models
 
 predict = pd.DataFrame(data = models, columns=['Model', 'MAE', 'MSE', 'RMSE', 'R2_Score(training)', 'R2_Score(test)', 'Cross-Validation'])
 predict
 
-''' Extra '''
+### Extra 
 # RMSE bar graph
 predict.sort_values(by=['RMSE'], ascending=False, inplace=True)
 f, axe = plt.subplots(1,1, figsize=(18,6))
