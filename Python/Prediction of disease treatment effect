@@ -1,4 +1,4 @@
-""" Prediction of disease treatment effect """
+### Prediction of disease treatment effect
 
 # libraries
 import pandas as pd
@@ -9,16 +9,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # data
-# Yearly Cost
-data = pd.read_csv('.../data_YearlyCost63.csv')
-
-# Yearly Con
-data = pd.read_csv('.../data_YearlyConstituents61.csv')
+data = pd.read_csv('.../data2.csv')
 
 # set a white background  
 sns.set(style="whitegrid")
 
-""" Results: Figure 4 and Supplemental Figure 2 in Paper """
+### Results: Figure 4 and Supplemental Figure 2 in Paper
 
 # Susceptibility to R6 Strains
 data_wide = data.pivot(columns ='Susceptibility to V6 strains',
@@ -87,10 +83,7 @@ ax.set_xlabel("Prediction of disease treatment effect")
 plt.savefig("Year.png", dpi=1000)
 
 
-# Data for Quadrant
-data = pd.read_csv('.../data_YearlyCost62.csv')
-data = pd.read_csv('.../data_YearlyConstituents62.csv')
-
+# Quadrant
 # density plot
 data_wide = data.pivot(columns ='Quadrant',
                      values = 'Prediction')
