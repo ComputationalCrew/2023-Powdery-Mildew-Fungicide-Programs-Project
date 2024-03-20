@@ -64,7 +64,7 @@ iv.forest <- instrumental_forest(X = X2.2,
 
 round(average_treatment_effect(iv.forest, target.sample="all"),2)
 t <- round(average_treatment_effect(iv.forest, target.sample="all"),2)
-predictions <- iv.forest$predictions
+
 
 ''' Table 1: Variable importance '''
 # Variable importance
@@ -162,3 +162,13 @@ cates[38, ]<- c("Year", "2016",
                 average_treatment_effect(iv.forest, subset = (data$YearDummy_2016 == 1)))
 cates[39, ]<- c("Year", "2017", 
                 average_treatment_effect(iv.forest, subset = (data$YearDummy_2017 == 1)))
+
+## Export to csv
+
+cates$cate <- as.numeric(cates$cate)
+cates$se <- as.numeric(cates$se)
+cates$ate_lb <- cates$cate - 1.96 * cates$se
+cates$ate_ub <- cates$cate + 1.96 * cates$se
+data$predictions <- iv.forest$predictions
+write.csv(data, file ="data2.csv")
+write.csv(cates, file ="cates2.csv")
