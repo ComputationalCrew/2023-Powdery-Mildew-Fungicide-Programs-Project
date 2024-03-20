@@ -199,5 +199,4 @@ f, axe = plt.subplots(1,1, figsize=(18,6))
 sns.barplot(x='Model', y='RMSE', data=predict, ax = axe)
 axe.set_xlabel('Model', size=16)
 axe.set_ylabel('RMSE', size=16)
-
 plt.show()
