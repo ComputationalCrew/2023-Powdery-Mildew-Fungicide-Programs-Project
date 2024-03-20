@@ -76,8 +76,9 @@ selected.vars <- which(forest.Y.varimp / mean(forest.Y.varimp) > 0.5)
 selected.vars_list <- colnames(X2.2)[selected.vars]
 selected.vars_list
 
-### Figure 1: Histogram for CATE(If you want higher resolution, you may use Python code.) 
+### Figure 1: Histogram for CATE 
 # Histogram for CATE
+predictions <- iv.forest$predictions
 hist(predictions, main="CATE estimates", freq=F, las=1, col = "grey")
 
 ### Table 4: ATE by Covariates
