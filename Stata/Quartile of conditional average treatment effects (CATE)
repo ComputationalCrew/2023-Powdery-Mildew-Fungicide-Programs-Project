@@ -1,0 +1,12 @@
+### Quartile of conditional average treatment effects (CATE)
+
+clear all
+set more off
+cd "(directory path)..."
+import delimited "(file name)data2.csv", clear
+
+### Supp. Table 1: Observations by quartile of CATE
+
+xtile te = predictions, nq(4)  
+tabmult, cat(susceptibility_to_r6_strains susceptibility_to_nonr6_strains initial_strain pruning degree_centrality_nonr6_mayjun degree_centrality_nonr6_junjul quadrant grower year) by(te) scol save ("Code_Stata\HTEtable_inc_col.xls") replace
+tabmult, cat(susceptibility_to_r6_strains susceptibility_to_nonr6_strains initial_strain pruning degree_centrality_nonr6_mayjun degree_centrality_nonr6_junjul quadrant grower year) by(te) row  save ("Code_Stata\_HTEtable_inc_row.xls") replace
