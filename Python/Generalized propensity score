@@ -1,4 +1,4 @@
-''' Generalized propensity score '''
+### Generalized propensity score
 
 # libraries
 import seaborn as sns
@@ -6,12 +6,12 @@ import matplotlib.pyplot as plt
 from plotnine.data import diamonds # dataset
 
 # Data
-df = pd.read_csv('.../Clean Data_Random Forest_6GPS_YealyCost.csv')
+df = pd.read_csv('.../Clean Data_Random Forest_GPS.csv')
 
 # Set figure size for the notebook
 plt.rcParams["figure.figsize"]=12,8
 
-""" Figure 6: Density plot """
+### Figure 6: Density plot 
 b = sns.kdeplot(data=df, x="GPS", hue="Mildew Incidence_Dummy", cut=0, fill = True, multiple="stack",
     cumulative=False, common_norm=False, common_grid=True, alpha=1)
 sns.move_legend(b, "lower center", 
