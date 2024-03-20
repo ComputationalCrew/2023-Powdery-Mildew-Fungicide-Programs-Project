@@ -121,6 +121,11 @@ plt.savefig("1.png", dpi=1000)
 sns.violinplot(x="Month", y="Monthly Constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
 plt.savefig("1.png", dpi=1000)
 
+''' Supp. Table 3: Mean and standard deviation (SD) of covariate variables by grower '''
+
+descriptive1 = data.groupby('Grower').mean()
+descriptive2 = data.groupby('Grower').std()
+
 
 """ Figure 3 and Supp. Figure 1: Spearman correlations """
 
