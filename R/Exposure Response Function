@@ -64,25 +64,25 @@ quant <- quantile(df$T.hat, probs = c(0.1, 0.90))
 ''' Figure 7: Causal exposure-response functions '''
 # Estimate the causal exposure response function (ERF) or the exposure-response curve (ERC)
 # Annual Costs
-erf_obj2 <- estimate_npmetric_erf(as.double(data$YearlyTCost),
+Annual_cost <- estimate_npmetric_erf(as.double(data$YearlyTCost),
                                   as.double(data$T.hat),
                                   data$counter_weight,
                                   bw_seq=seq(0.2,2,0.2) ,
                                   w_vals = seq(quant[1],quant[2], 0.1) ,
                                   nthread = 10,
                                   kernel_appr = "kernsmooth")
-png("erf_obj2.png", width=3000,height=3000, res=1000)
-plot(erf_obj2)
+png("Annual_cost.png", width=3000,height=3000, res=1000)
+plot(Annual_cost)
 dev.off()
 
 # Active Constituents
-erf_obj1 <- estimate_npmetric_erf(as.double(data$YearlyCon),
+Active_constituents <- estimate_npmetric_erf(as.double(data$YearlyCon),
                                   as.double(data$T.hat),
                                   data$counter_weight,
                                   bw_seq=seq(0.2,2,0.2) ,
                                   w_vals = seq(quant[1],quant[2], 0.1),
                                   nthread = 10,
                                   kernel_appr = "kernsmooth")
-png("erf_obj1.png", width=3000,height=3000, res=1000)
-plot(erf_obj1)
+png("Active_constituents.png", width=3000,height=3000, res=1000)
+plot(Active_constituents)
 dev.off()
