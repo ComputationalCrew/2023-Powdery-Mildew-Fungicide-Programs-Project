@@ -1,0 +1,33 @@
+### ANOVA 
+
+# Data
+data1 <- read.csv(".../data2.csv")
+
+### Table 4: ANOVA
+
+# Susceptibility to R6 Strains
+res.aov <- aov(ATE ~ Susceptibility_to_R6_Strains, data = data1)
+summary(res.aov)
+# Susceptibility to nonR6 Strains
+res.aov <- aov(ATE ~ Susceptibility_to_nonR6_Strains, data = data1)
+summary(res.aov)
+# Initial strain
+res.aov <- aov(ATE ~ Initial_Strain, data = data1)
+summary(res.aov)
+# Pruning
+res.aov <- aov(ATE ~ Pruning, data = data1)
+summary(res.aov)
+# degree_centrality_NonR6_MayJun
+res.aov <- aov(ATE ~ degree_centrality_NonR6_MayJun, data = data1)
+summary(res.aov)
+# degree_centrality_NonR6_JunJul
+res.aov <- aov(ATE ~ degree_centrality_NonR6_JunJul, data = data1)
+summary(res.aov)
+# Grower
+res.aov <- aov(ATE ~ Grower, data = data1)
+summary(res.aov)
+# Year
+res.aov <- aov(ATE ~ Year, data = data1)
+summary(res.aov)
+res.aov <- aov(ATE ~ Quadrant, data = data1)
+summary(res.aov)
