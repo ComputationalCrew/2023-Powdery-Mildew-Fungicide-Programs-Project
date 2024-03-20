@@ -1,4 +1,4 @@
-''' Generalized Random Forest '''
+### Generalized Random Forest
 
 library(grf)
 library(rpart)
@@ -66,7 +66,7 @@ round(average_treatment_effect(iv.forest, target.sample="all"),2)
 t <- round(average_treatment_effect(iv.forest, target.sample="all"),2)
 
 
-''' Table 1: Variable importance '''
+### Table 1: Variable importance 
 # Variable importance
 forest.Y.varimp <- variable_importance(iv.forest)
 forest.Y.varimp
@@ -76,11 +76,11 @@ selected.vars <- which(forest.Y.varimp / mean(forest.Y.varimp) > 0.5)
 selected.vars_list <- colnames(X2.2)[selected.vars]
 selected.vars_list
 
-''' Figure 1: Histogram for CATE(If you want higher resolution, you may use Python code.) '''
+### Figure 1: Histogram for CATE(If you want higher resolution, you may use Python code.) 
 # Histogram for CATE
 hist(predictions, main="CATE estimates", freq=F, las=1, col = "grey")
 
-''' Table 4: ATE by Covariates '''
+### Table 4: ATE by Covariates
 
 # Create CATEs table
 cates <- data.frame(var = rep(NA, 39), level = NA, cate = NA, se = NA)
@@ -163,7 +163,7 @@ cates[38, ]<- c("Year", "2016",
 cates[39, ]<- c("Year", "2017", 
                 average_treatment_effect(iv.forest, subset = (data$YearDummy_2017 == 1)))
 
-## Export to csv
+# Export to csv
 
 cates$cate <- as.numeric(cates$cate)
 cates$se <- as.numeric(cates$se)
