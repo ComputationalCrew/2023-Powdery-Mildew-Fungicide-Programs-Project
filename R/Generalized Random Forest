@@ -171,5 +171,6 @@ cates$se <- as.numeric(cates$se)
 cates$ate_lb <- cates$cate - 1.96 * cates$se
 cates$ate_ub <- cates$cate + 1.96 * cates$se
 data$predictions <- iv.forest$predictions
+data$ATE <- average_treatment_effect(iv.forest, target.sample="all")
 write.csv(data, file ="data2.csv")
 write.csv(cates, file ="cates2.csv")
