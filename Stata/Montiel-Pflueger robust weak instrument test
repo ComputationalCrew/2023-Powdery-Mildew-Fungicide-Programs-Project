@@ -1,10 +1,11 @@
+#### Weak IV Test
+
 clear all
-
 set more off
-
 cd "(directory path)..."
-
 import delimited "(file name)Clean Data_Random Forest_V1.csv", clear
+
+### Table 3: Montiel-Pflueger robust weak instrument test 
 
 # Annual cost
 ivreg2 annual_cost susceptibility_to_r6_strains susceptibility_to_nonr6_strains initial_strain pruning degree_centrality_nonr6_mayjun degree_centrality_nonr6_junjul ne nw se grower_1 grower_2 grower_3 grower_4 grower_5 grower_6 grower_7 grower_8 grower_9 yeardummy_2014 yeardummy_2015 yeardummy_2016 yeardummy_2017 (mildew_incidence = mildew_may_dummy) [robust]
