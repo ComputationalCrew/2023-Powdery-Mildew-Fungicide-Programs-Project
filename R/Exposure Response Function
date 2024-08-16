@@ -24,8 +24,8 @@ df$T.hat <- predict(reg1)
 
 pseudo_pop <- generate_pseudo_pop(
   df[, c("id", "T.hat")],
-  df[, c("id", "Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_JunJul", "Quadrant", "Grower", "Year")],
-  ci_appr = "matching",
+  df[, c("id", "Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_JunJul", "Quadrant", "Grower", "Year", "FlagShoot_Incidence", "Mildew_Apr", "Mildew_May", "Mildew_Jun", "Mildew_Jul", "degree_centrality_R6_MayJun", "degree_centrality_R6_JunJul")],
+  ci_appr = "weighting",
   gps_density = "kernel",
   use_cov_transform = TRUE,
   transformers = list("pow2", "pow3", "abs", 
@@ -33,17 +33,22 @@ pseudo_pop <- generate_pseudo_pop(
   exposure_trim_qtls = c(0.01,0.99),
   sl_lib = c("m_xgboost"),
   covar_bl_method = "absolute",
-  covar_bl_trs = 0.4,
+  covar_bl_trs = 0.2,
   covar_bl_trs_type = "mean",
   max_attempt = 4,
   dist_measure = "l1",
   delta_n = 0.02,          # changed from 1 to 0.02
   scale = 0.5,
   nthread = 1
-  )
+  )                            
+
 
 ### Figure 5: Covariate balance plot
-plot(pseudo_pop, include_details = TRUE)
+png("pseudo_pop.png", width=6000,height=7000, res=1000)
+plot(pseudo_pop) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                 panel.background = element_blank(), axis.line = element_line(colour = "black")) 
+
+dev.off()
 
 # Estimating GPS
 data_with_gps <- estimate_gps(w = pseudo_pop$pseudo_pop[, c("id", "T.hat")],
@@ -60,29 +65,3 @@ data_with_gps[["dataset"]][["gps"]]
 data <- merge(df[, c("id", "YearlyCon", "YearlyTCost")], pseudo_pop$pseudo_pop, by = "id")
 # Merge data 
 quant <- quantile(df$T.hat, probs = c(0.1, 0.90))
-
-### Figure 7: Causal exposure-response functions
-# Estimate the causal exposure response function (ERF) or the exposure-response curve (ERC)
-# Annual Costs
-Annual_cost <- estimate_npmetric_erf(as.double(data$YearlyTCost),
-                                  as.double(data$T.hat),
-                                  data$counter_weight,
-                                  bw_seq=seq(0.2,2,0.2) ,
-                                  w_vals = seq(quant[1],quant[2], 0.1) ,
-                                  nthread = 10,
-                                  kernel_appr = "kernsmooth")
-png("Annual_cost.png", width=3000,height=3000, res=1000)
-plot(Annual_cost)
-dev.off()
-
-# Active Constituents
-Active_constituents <- estimate_npmetric_erf(as.double(data$YearlyCon),
-                                  as.double(data$T.hat),
-                                  data$counter_weight,
-                                  bw_seq=seq(0.2,2,0.2) ,
-                                  w_vals = seq(quant[1],quant[2], 0.1),
-                                  nthread = 10,
-                                  kernel_appr = "kernsmooth")
-png("Active_constituents.png", width=3000,height=3000, res=1000)
-plot(Active_constituents)
-dev.off()
