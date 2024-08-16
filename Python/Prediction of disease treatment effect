@@ -11,10 +11,10 @@ import matplotlib.pyplot as plt
 # data
 
 # Annual Costs
-data = pd.read_csv('.../Prediction_Cost.csv')
+data = pd.read_csv('.../Cost.csv')
 
 # Yearly Constituents
-data = pd.read_csv('.../Prediction_Constituents.csv')
+data = pd.read_csv('.../Constituents.csv')
 
 # set a white background  
 sns.set(style="whitegrid")
@@ -98,10 +98,10 @@ plt.savefig("1.png", dpi=1000)
 # Quadrant
 
 # Annual Costs
-data = pd.read_csv('.../Prediction_Cost_quadrant.csv')
+data = pd.read_csv('.../Cost_quadrant.csv')
 
 # Yearly Constituents
-data = pd.read_csv('.../Prediction_Constituents_quadrant.csv')
+data = pd.read_csv('.../Constituents_quadrant.csv')
 
 # density plot
 data_wide = data.pivot(columns ='Quadrant',
