@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from plotnine.data import diamonds # dataset
 
 # Data
-df = pd.read_csv('.../GPS.csv')
+df = pd.read_csv('.../Clean Data_Random Forest_V1.csv')
 
 # Set figure size for the notebook
 plt.rcParams["figure.figsize"]=12,8
