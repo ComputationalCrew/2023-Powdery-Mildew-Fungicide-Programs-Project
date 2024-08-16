@@ -16,9 +16,7 @@ describe(data)
 covariates <- c("Mildew_Apr_Dummy", "FlagShoot_Incidence", "Mildew_Jun_Dummy", "Mildew_Jul_Dummy",
                  "Susceptibility_to_R6_Strains", "Susceptibility_to_nonR6_Strains", 
                  "Initial_Strain",  "Pruning", "Grower_1","Grower_2","Grower_3","Grower_4", 
-                 "Grower_5","Grower_6","Grower_7", "Grower_8","Grower_9", 
-                 "degree_centrality_R6_MayJun", "degree_centrality_NonR6_MayJun", 
-                 "degree_centrality_R6_JunJul", "degree_centrality_NonR6_JunJul",
+                 "Grower_5","Grower_6","Grower_7", "Grower_8","Grower_9",
                  "YearDummy_2014","YearDummy_2015","YearDummy_2016","YearDummy_2017",
                  "NE","NW","SW","SE")
 
