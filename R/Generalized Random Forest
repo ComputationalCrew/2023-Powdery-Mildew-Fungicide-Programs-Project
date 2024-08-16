@@ -123,14 +123,6 @@ cates[18, ]<- c("Pruning", "Pruning=4",
                average_treatment_effect(iv.forest, subset = (data$Pruning == 4)))
 cates[19, ]<- c("Pruning", "Pruning=5", 
                average_treatment_effect(iv.forest, subset = (data$Pruning == 5)))
-cates[20, ]<- c("degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_MayJun = 0", 
-                average_treatment_effect(iv.forest, subset = (data$degree_centrality_NonR6_MayJun == 0)))
-cates[21, ]<- c("degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_MayJun = 1", 
-                average_treatment_effect(iv.forest, subset = (data$degree_centrality_NonR6_MayJun == 1)))
-cates[22, ]<- c("degree_centrality_NonR6_JunJul", "degree_centrality_NonR6_JunJul = 0", 
-                average_treatment_effect(iv.forest, subset = (data$degree_centrality_NonR6_JunJul == 0)))
-cates[23, ]<- c("degree_centrality_NonR6_JunJul", "degree_centrality_NonR6_JunJul = 1", 
-                average_treatment_effect(iv.forest, subset = (data$degree_centrality_NonR6_JunJul == 1)))
 cates[24, ]<- c("Direction", "NE",
                 average_treatment_effect(iv.forest, subset = (data$NE == 1)))
 cates[25, ]<- c("Direction", "NW",
