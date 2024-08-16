@@ -2,10 +2,10 @@
 
 # Data
 # Annual Costs
-data1 <- read.csv(".../ANOVA_Costs.csv")
+data1 <- read.csv(".../Cost.csv")
 
 # Yearly Constituents
-data1 <- read.csv(".../ANOVA_Constituents.csv")
+data1 <- read.csv(".../Constituents.csv")
 
 ### Table 4: ANOVA
 
