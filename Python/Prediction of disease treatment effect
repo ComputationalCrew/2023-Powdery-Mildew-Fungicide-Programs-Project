@@ -97,12 +97,6 @@ plt.savefig("1.png", dpi=1000)
 
 # Quadrant
 
-# Annual Costs
-data = pd.read_csv('.../Prediction_Cost_Quadrant.csv')
-
-# Yearly Constituents
-data = pd.read_csv('.../Prediction_Constituents_Quadrant.csv')
-
 # density plot
 data_wide = data.pivot(columns ='Quadrant',
                      values = 'Prediction')
