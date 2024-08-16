@@ -110,6 +110,27 @@ print('t-statistic:', t_statistic)
 print('p-value:', "%.4f" % p_value)
 print('Degrees of Freedom:', df)
 
+### Figure 1. CATE histogram with box plots
+
+df = pd.read_csv('.../raw_prediction.csv') 
+
+import numpy as np
+from matplotlib import pyplot as plt
+
+plt.rcParams["figure.figsize"] = [7, 7]
+sns.set(font_scale=2)
+sns.set(style="white")
+f, (ax_box, ax_hist) = plt.subplots(2, sharex=True, 
+                                    gridspec_kw={"height_ratios": (.15, .85)})
+sns.boxplot(df['predictions'], ax=ax_box, vert=False)
+sns.distplot(df['predictions'], kde= False, ax=ax_hist)
+ax_box.set(yticks=[])
+sns.despine(ax=ax_hist)
+sns.despine(ax=ax_box, left=False)
+plt.xlabel('Annual cost predictions')
+plt.ylabel('Count')
+plt.savefig("1.png", dpi=1000)
+
 ### Figure 2. Violin Plot
 
 sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
