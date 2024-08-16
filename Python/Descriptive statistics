@@ -177,9 +177,13 @@ df = pd.DataFrame({'Annual cost': TotalCost,
                    'Degree centrality non-R6-cultivars May-June': Degree_centrality_nonR6cultivars_MayJune,
                    'Degree centrality non-R6-cultivars June-July': Degree_centrality_nonR6cultivars_JunJul})
 corr = df.corr(method = 'spearman')
-fig, ax = plt.subplots(figsize=(10,10)) 
-sns.heatmap(corr, annot = True, fmt=".2f")
+matrix = np.triu(corr)
+sns.set(style="white")
+sns.set(font_scale=1.5)
+fig, ax = plt.subplots(figsize=(15,15), dpi=1000) 
+sns.heatmap(corr, annot = True, fmt=".2f", cmap="RdBu", mask=matrix, vmin = -1, vmax = 1)
 fig.autofmt_xdate(rotation=45)
+plt.grid(None)
 plt.show()
 
 # All input
@@ -217,7 +221,11 @@ df = pd.DataFrame({'Annual cost': TotalCost,
                    'Degree centrality non-R6-cultivars June-July': Degree_centrality_nonR6cultivars_JunJul,
                    })
 corr = df.corr(method = 'spearman')
-fig, ax = plt.subplots(figsize=(10,10)) 
-sns.heatmap(corr, annot = True, fmt=".2f")
+matrix = np.triu(corr)
+sns.set(style="white")
+sns.set(font_scale=1)
+fig, ax = plt.subplots(figsize=(10,10), dpi=1000) 
+sns.heatmap(corr, annot = True, fmt=".2f", cmap="RdBu", mask=matrix, vmin = -1, vmax = 1)
 fig.autofmt_xdate(rotation=45)
+plt.grid(None)
 plt.show()
