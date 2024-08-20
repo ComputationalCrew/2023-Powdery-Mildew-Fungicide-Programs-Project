@@ -1,4 +1,10 @@
 ### Descriptive statistics: Mean and SD, t-test 
+### Table 1: Mean and SD
+### Figure 1. CATE histogram with box plots
+### Supp. Table 3: Mean and standard deviation (SD) of covariate variables by grower
+### Figure 3 and Supp. Figure 1: Spearman correlations
+### Figure 2. Violin Plot
+
 
 # libraries
 import pandas as pd
@@ -84,8 +90,8 @@ print('p-value:', "%.4f" % p_value)
 print('Degrees of Freedom:', df)
 
 # Initial strain V6-virulent  
-group1 = a['Initial_Strain']
-group2 = b['Initial_Strain']
+group1 = a['Initial_strain']
+group2 = b['Initial_strain']
 # Perform t-test
 t_statistic, p_value, df = sm.stats.ttest_ind(group1, group2)
 print('t-statistic:', t_statistic)
@@ -123,8 +129,8 @@ sns.set(font_scale=2)
 sns.set(style="white")
 f, (ax_box, ax_hist) = plt.subplots(2, sharex=True, 
                                     gridspec_kw={"height_ratios": (.15, .85)})
-sns.boxplot(df['predictions'], ax=ax_box, vert=False)
-sns.distplot(df['predictions'], kde= False, ax=ax_hist)
+sns.boxplot(data['predictions'], ax=ax_box, vert=False)
+sns.distplot(data['predictions'], kde= False, ax=ax_hist)
 ax_box.set(yticks=[])
 sns.despine(ax=ax_hist)
 sns.despine(ax=ax_box, left=False)
@@ -132,24 +138,10 @@ plt.xlabel('Annual cost predictions')
 plt.ylabel('Count')
 plt.savefig("1.png", dpi=1000)
 
-### Figure 2. Violin Plot
-
-sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
-plt.savefig("Year_Active_constituents.png", dpi=1000)
-sns.violinplot(x="Year", y="Annual_Cost", data=data, palette="Pastel1")
-plt.savefig("Year_Annual_cost.png", dpi=1000)
-
-data = pd.read_csv('.../powdery_mildew_fungicide_record_database_ViolinPlot.csv')
-
-sns.violinplot(x="Month", y="Monthly_cost", hue="Year", order = ['March','April','May','June','July','August'], data=data1, palette="Pastel1")
-plt.savefig("Month_cost.png", dpi=1000)
-sns.violinplot(x="Month", y="Monthly_constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data1, palette="Pastel1")
-plt.savefig("Month_constituents.png", dpi=1000)
-
 ### Supp. Table 3: Mean and standard deviation (SD) of covariate variables by grower
 
-descriptive1 = data.groupby('Grower').mean()
-descriptive2 = data.groupby('Grower').std()
+descriptive4 = data.groupby('Grower_Ordinal').mean(numeric_only = True)
+descriptive5 = data.groupby('Grower_Ordinal').std(numeric_only = True)
 
 
 ### Figure 3 and Supp. Figure 1: Spearman correlations
@@ -230,3 +222,18 @@ sns.heatmap(corr, annot = True, fmt=".2f", cmap="RdBu", mask=matrix, vmin = -1, 
 fig.autofmt_xdate(rotation=45)
 plt.grid(None)
 plt.show()
+
+### Figure 2. Violin Plot
+
+sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
+plt.savefig("Year_Active_constituents.png", dpi=1000)
+sns.violinplot(x="Year", y="Annual_Cost", data=data, palette="Pastel1")
+plt.savefig("Year_Annual_cost.png", dpi=1000)
+
+data = pd.read_csv('.../powdery_mildew_fungicide_record_database_ViolinPlot.csv')
+
+sns.violinplot(x="Month", y="Monthly_cost", hue="Year", order = ['March','April','May','June','July','August'], data=data1, palette="Pastel1")
+plt.savefig("Month_cost.png", dpi=1000)
+sns.violinplot(x="Month", y="Monthly_constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data1, palette="Pastel1")
+plt.savefig("Month_constituents.png", dpi=1000)
+
