@@ -18,8 +18,8 @@ data = pd.read_csv('.../Clean Data_Random Forest_V1.csv')
 ### Table 1: Mean and SD 
 
 descriptive = data.describe().T
-descriptive_MI_mean = data.groupby('Mildew_Incidence_Dummy').mean().T
-descriptive_MI_std = data.groupby('Mildew_Incidence_Dummy').std().T
+descriptive_MI_mean = data.groupby('Mildew_Incidence_Dummy').mean(numeric_only = True).T
+descriptive_MI_std = data.groupby('Mildew_Incidence_Dummy').std(numeric_only = True).T
 
 ###  Table 1: t value
 
