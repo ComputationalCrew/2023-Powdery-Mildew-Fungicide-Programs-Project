@@ -1,4 +1,5 @@
 ### Prediction of disease treatment effect
+# Figure 4 and Supplemental Figure 2 in Paper
 
 # libraries
 import pandas as pd
@@ -108,4 +109,3 @@ ax.set_xlabel("Year", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
 plt.savefig("1.png", dpi=1000)
-
