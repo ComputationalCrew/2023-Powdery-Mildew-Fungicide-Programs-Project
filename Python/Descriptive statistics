@@ -225,6 +225,9 @@ plt.show()
 
 ### Figure 2. Violin Plot
 
+data = pd.read_csv('.../ViolinPlot.csv')
+
+
 sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
 plt.savefig("Year_Active_constituents.png", dpi=1000)
 sns.violinplot(x="Year", y="Annual_Cost", data=data, palette="Pastel1")
