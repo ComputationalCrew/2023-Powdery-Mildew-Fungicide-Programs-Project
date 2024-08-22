@@ -6,6 +6,7 @@ Hwang et al. 2024. What explains hop growers’ fungicide use intensity and mana
 The data files provided include the following variables.
 
 Clean Data_Random Forest_V1.csv
+
 Year: Classification variable for year of observation, 2014 to 2017
 Field_ID: A unique identifier for each hop yard within each year. 
 Quadrant: A classification variable denoting which quadrant in the landscape each hop yard (Field_ID) was located within relative to the centroid of all yards. Values are SE, SW, NE, NW based
