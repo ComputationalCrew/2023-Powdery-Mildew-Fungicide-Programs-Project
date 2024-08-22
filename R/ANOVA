@@ -1,4 +1,5 @@
-### ANOVA 
+### ANOVA
+### Table 4: ANOVA
 
 # Data
 # Annual Costs
@@ -8,6 +9,7 @@ data1 <- read.csv(".../Cost.csv")
 data1 <- read.csv(".../Constituents.csv")
 
 ### Table 4: ANOVA
+# ATE for annual costs and ATE1 for active constituents
 
 # Susceptibility to R6 Strains
 res.aov <- aov(ATE ~ Susceptibility_to_R6_Strains, data = data1)
