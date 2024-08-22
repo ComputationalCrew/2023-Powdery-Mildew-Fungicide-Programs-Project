@@ -155,7 +155,7 @@ Mean_incidence_of_diseased_plants_May = data['Mildew_May']
 Susceptibility_to_R6virulent_isolates = data['Susceptibility_to_R6_Strains']
 Susceptibility_to_nonR6virulent_isolates = data['Susceptibility_to_nonR6_Strains']
 Pruning_thoroughness = data['Pruning']
-Initial_Strain = data['Initial_Strain']
+Initial_Strain = data['Initial_strain']
 Degree_centrality_nonR6cultivars_MayJune = data['degree_centrality_NonR6_MayJun']
 Degree_centrality_nonR6cultivars_JunJul = data['degree_centrality_NonR6_JunJul']
 df = pd.DataFrame({'Annual cost': TotalCost,
@@ -190,7 +190,7 @@ Mean_incidence_of_Flag_Shoot = data['FlagShoot_Incidence']
 Susceptibility_to_R6virulent_isolates = data['Susceptibility_to_R6_Strains']
 Susceptibility_to_nonR6_Strains_isolates = data['Susceptibility_to_nonR6_Strains']
 Pruning_thoroughness = data['Pruning']
-Initial_Strain = data['Initial_Strain']
+Initial_Strain = data['Initial_strain']
 Degree_centrality_R6cultivars_MayJune = data['degree_centrality_R6_MayJun']
 Degree_centrality_nonR6cultivars_MayJune = data['degree_centrality_NonR6_MayJun']
 Degree_centrality_R6cultivars_JunJul = data['degree_centrality_R6_JunJul']
@@ -226,16 +226,13 @@ plt.show()
 
 data = pd.read_csv('.../ViolinPlot.csv')
 
-
-sns.violinplot(x="Year", y="Active_Constituents", data=data, palette="Pastel1")
+sns.set(style="white")
+sns.violinplot(x="Year", y="YearlyCon", data=data, palette="Pastel1")
 plt.savefig("Year_Active_constituents.png", dpi=1000)
 sns.violinplot(x="Year", y="Annual_Cost", data=data, palette="Pastel1")
 plt.savefig("Year_Annual_cost.png", dpi=1000)
 
-data = pd.read_csv('.../powdery_mildew_fungicide_record_database_ViolinPlot.csv')
-
-sns.violinplot(x="Month", y="Monthly_cost", hue="Year", order = ['March','April','May','June','July','August'], data=data1, palette="Pastel1")
+sns.violinplot(x="Month", y="Monthly_Cost", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
 plt.savefig("Month_cost.png", dpi=1000)
-sns.violinplot(x="Month", y="Monthly_constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data1, palette="Pastel1")
+sns.violinplot(x="Month", y="Monthly_constituents", hue="Year", order = ['March','April','May','June','July','August'], data=data, palette="Pastel1")
 plt.savefig("Month_constituents.png", dpi=1000)
-
