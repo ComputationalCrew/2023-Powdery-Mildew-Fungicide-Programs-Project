@@ -56,7 +56,7 @@ ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
 plt.savefig("1.png", dpi=1000)
 
-# degree_centrality_NonR6_MayJun 
+# Degree_centrality_NonR6_MayJun 
 sns.set(style="white")
 plt.figure(figsize=(10,8))
 ax= sns.violinplot(x='degree_centrality_NonR6_MayJun', y='predictions', data=data)
@@ -65,7 +65,7 @@ ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
 plt.savefig("1.png", dpi=1000)
 
-# degree_centrality_NonR6_JunJul
+# Degree_centrality_NonR6_JunJul
 sns.set(style="white")
 plt.figure(figsize=(10,8))
 ax= sns.violinplot(x='degree_centrality_NonR6_JunJul', y='predictions', data=data)
@@ -92,19 +92,27 @@ ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
 plt.savefig("1.png", dpi=1000)
 
-
 # Quadrant
 
-# Annual Costs
+# Active costs
 data = pd.read_csv('.../Cost_quadrant.csv')
-
-# Yearly Constituents
-data = pd.read_csv('.../Constituents_quadrant.csv')
 
 # density plot
 sns.set(style="white")
 plt.figure(figsize=(10,8))
 ax= sns.violinplot(x='Quadrant', y='predictions', data=data)
+ax.set_xlabel("Year", fontsize=16)
+ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
+plt.tick_params(axis='both', labelsize=20)
+plt.savefig("1.png", dpi=1000)
+
+# Active constituents
+data = pd.read_csv('.../Constituents_quadrant.csv')
+
+# density plot
+sns.set(style="white")
+plt.figure(figsize=(10,8))
+ax= sns.violinplot(x='Quadrant', y='predictions1', data=data)
 ax.set_xlabel("Year", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
