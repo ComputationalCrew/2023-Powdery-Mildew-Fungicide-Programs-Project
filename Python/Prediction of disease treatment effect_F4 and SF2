@@ -101,9 +101,11 @@ data = pd.read_csv('.../Cost_quadrant.csv')
 data = pd.read_csv('.../Constituents_quadrant.csv')
 
 # density plot
-data_wide = data.pivot(columns ='Quadrant',
-                     values = 'Prediction')
-ax=data_wide.plot.kde(figsize = (8, 6),
-                   linewidth = 4)
-ax.set_xlabel("Prediction of disease treatment effect")
-plt.savefig("Quadrant.png", dpi=1000)
+sns.set(style="white")
+plt.figure(figsize=(10,8))
+ax= sns.violinplot(x='Quadrant', y='predictions', data=data)
+ax.set_xlabel("Year", fontsize=16)
+ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
+plt.tick_params(axis='both', labelsize=20)
+plt.savefig("1.png", dpi=1000)
+
