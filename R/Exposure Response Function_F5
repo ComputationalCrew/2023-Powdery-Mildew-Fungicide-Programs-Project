@@ -60,9 +60,3 @@ data_with_gps <- estimate_gps(w = pseudo_pop$pseudo_pop[, c("id", "T.hat")],
                               sl_lib = c("m_xgboost")
                               )
 data_with_gps[["dataset"]][["gps"]]
-
-# Modelling outcomes for causal inference
-# Merge data
-data <- merge(df[, c("id", "YearlyCon", "YearlyTCost")], pseudo_pop$pseudo_pop, by = "id")
-# Merge data 
-quant <- quantile(df$T.hat, probs = c(0.1, 0.90))
