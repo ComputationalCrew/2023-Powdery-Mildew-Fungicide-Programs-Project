@@ -1,7 +1,11 @@
 # 2023-Powdery-Mildew-Fungicide-Programs-Project
 
-**Abstract**
+The data and codes available here accompany the paper:
+Hwang et al. 2024. What explains hop growers’ fungicide use intensity and management costs in response to powdery mildew? Phytopathology  https://doi.org/10.1094/PHYTO-04-24-0127-R
 
-Methods for causal inference from observational data are common in human disease epidemiology and social sciences but are used relatively little in plant pathology. We draw upon an extensive data set of the incidence of hop plants with powdery mildew (Podosphaera macularis) collected from yards in Oregon during 2014 to 2017 and associated metadata on grower cultural practices, cultivar susceptibility to powdery mildew, and pesticide application records to understand variation in and causes of growers' fungicide use and associated costs. An instrumental causal forest model identified growers' spring pruning thoroughness, cultivar susceptibility to two of the dominant pathogenic races of P. macularis, network centrality of a yards during May-June and June-July time transitions, and the initial strain of the fungus were important variables determining the number of pesticide active constituents applied by growers and the associated costs they incurred in response to powdery mildew. Exposure-response function models fit after covariate weighting indicated both the number of pesticide active constituents applied and their associated costs scaled linearly with the seasonal mean incidence of plants with powdery mildew. While the causes of pesticide use intensity are multifaceted, biological and production factors collectively influence the incidence of powdery mildew, which has a direct exposure-response relationship on the number of pesticide active constituents that growers apply and their costs. Our analyses point to several potential strategies for reducing pesticide use and costs for management of powdery mildew on hop. We also highlight the utility of these methods for causal inference in observational studies.
+The data files provided include the following variables.
 
-_Keywords_: Conditional average treatment effect (CATE), Generalized propensity score, Hop powdery mildew
+Clean Data_Random Forest_V1.csv
+Year: Classification variable for year of observation, 2014 to 2017
+Field_ID: A unique identifier for each hop yard within each year. 
+Quadrant: A classification variable denoting which quadrant in the landscape each hop yard (Field_ID) was located within relative to the centroid of all yards. Values are SE, SW, NE, NW based
