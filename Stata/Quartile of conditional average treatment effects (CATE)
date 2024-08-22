@@ -1,4 +1,5 @@
 ### Quartile of conditional average treatment effects (CATE)
+# Data 2 is from generalized random forest
 
 clear all
 set more off
