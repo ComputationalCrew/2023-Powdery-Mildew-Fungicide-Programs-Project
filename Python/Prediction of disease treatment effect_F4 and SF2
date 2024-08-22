@@ -9,22 +9,19 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # data
-
-# Annual Costs
-data = pd.read_csv('.../Cost.csv')
-
-# Yearly Constituents
-data = pd.read_csv('.../Constituents.csv')
+data = pd.read_csv(".../Clean Data_Random Forest_V1.csv")
 
 # set a white background  
 sns.set(style="whitegrid")
 
 ### Results: Figure 4 and Supplemental Figure 2 in Paper
+# prediction variable: Annual costs
+# prediction1 variable: Active constituents
 
 # Susceptibility to R6 Strains
 sns.set(style="white")
 plt.figure(figsize=(10,8))
-ax= sns.violinplot(x='Susceptibility to V6 strains', y='Prediction', data=data)
+ax= sns.violinplot(x='Susceptibility_to_R6_Strains', y='predictions', data=data)
 ax.set_xlabel("Susceptibility to V6 strains", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=20)
 plt.tick_params(axis='both', labelsize=20)
@@ -34,7 +31,7 @@ plt.savefig("1.png", dpi=1000)
 # Susceptibility to nonR6 Strains
 sns.set(style="white")
 plt.figure(figsize=(10,8))
-ax= sns.violinplot(x='Susceptibility to nonV6 strains', y='Prediction', data=data)
+ax= sns.violinplot(x='Susceptibility_to_nonR6_Strains', y='predictions', data=data)
 ax.set_xlabel("Susceptibility to nonV6 strains", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
@@ -43,7 +40,7 @@ plt.savefig("1.png", dpi=1000)
 # Initial Strain
 sns.set(style="white")
 plt.figure(figsize=(10,8))
-ax= sns.violinplot(x='Initial strain', y='Prediction', data=data)
+ax= sns.violinplot(x='Initial_strain', y='predictions', data=data)
 ax.set_xlabel("Initial strain", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
@@ -52,7 +49,7 @@ plt.savefig("1.png", dpi=1000)
 # pruning 
 sns.set(style="white")
 plt.figure(figsize=(10,8))
-ax= sns.violinplot(x='Pruning thoroughness', y='Prediction', data=data)
+ax= sns.violinplot(x='Pruning', y='predictions', data=data)
 ax.set_xlabel("Pruning thoroughness", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
@@ -61,7 +58,7 @@ plt.savefig("1.png", dpi=1000)
 # degree_centrality_NonR6_MayJun 
 sns.set(style="white")
 plt.figure(figsize=(10,8))
-ax= sns.violinplot(x='degree centrality NonR6 MayJune', y='Prediction', data=data)
+ax= sns.violinplot(x='degree_centrality_NonR6_MayJun', y='predictions', data=data)
 ax.set_xlabel("degree centrality NonR6 MayJune", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
@@ -70,7 +67,7 @@ plt.savefig("1.png", dpi=1000)
 # degree_centrality_NonR6_JunJul
 sns.set(style="white")
 plt.figure(figsize=(10,8))
-ax= sns.violinplot(x='degree centrality NonR6 JuneJuly', y='Prediction', data=data)
+ax= sns.violinplot(x='degree_centrality_NonR6_JunJul', y='predictions', data=data)
 ax.set_xlabel("degree centrality NonR6 JuneJuly", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
@@ -79,7 +76,7 @@ plt.savefig("1.png", dpi=1000)
 # Grower
 sns.set(style="white")
 plt.figure(figsize=(10,8))
-ax= sns.violinplot(x='Grower', y='Prediction', data=data)
+ax= sns.violinplot(x='Grower_Ordinal', y='predictions', data=data)
 ax.set_xlabel("Grower", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
@@ -88,7 +85,7 @@ plt.savefig("1.png", dpi=1000)
 # Year
 sns.set(style="white")
 plt.figure(figsize=(10,8))
-ax= sns.violinplot(x='Year', y='Prediction', data=data)
+ax= sns.violinplot(x='Year', y='predictions', data=data)
 ax.set_xlabel("Year", fontsize=16)
 ax.set_ylabel("Prediction of disease treatment effect", fontsize=16)
 plt.tick_params(axis='both', labelsize=20)
