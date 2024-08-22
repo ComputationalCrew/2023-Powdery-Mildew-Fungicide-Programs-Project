@@ -3,10 +3,7 @@
 
 # Data
 # Annual Costs
-data1 <- read.csv(".../Cost.csv")
-
-# Yearly Constituents
-data1 <- read.csv(".../Constituents.csv")
+data1 <- read.csv('.../Clean Data_Random Forest_V1.csv')
 
 ### Table 4: ANOVA
 # ATE for annual costs and ATE1 for active constituents
@@ -18,7 +15,7 @@ summary(res.aov)
 res.aov <- aov(ATE ~ Susceptibility_to_nonR6_Strains, data = data1)
 summary(res.aov)
 # Initial strain
-res.aov <- aov(ATE ~ Initial_Strain, data = data1)
+res.aov <- aov(ATE ~ Initial_strain, data = data1)
 summary(res.aov)
 # Pruning
 res.aov <- aov(ATE ~ Pruning, data = data1)
@@ -30,7 +27,7 @@ summary(res.aov)
 res.aov <- aov(ATE ~ degree_centrality_NonR6_JunJul, data = data1)
 summary(res.aov)
 # Grower
-res.aov <- aov(ATE ~ Grower, data = data1)
+res.aov <- aov(ATE ~ Grower_Ordinal, data = data1)
 summary(res.aov)
 # Year
 res.aov <- aov(ATE ~ Year, data = data1)
