@@ -1,4 +1,5 @@
 ### Exposure Response Function
+### Figure 5: Covariate balance plot
 
 # Package
 library("CausalGPS")
@@ -8,7 +9,7 @@ library(ggplot2)
 df <- read.csv(".../Clean Data_Random Forest_GPS.csv")
 
 df$Quadrant <- as.factor(df$Quadrant)
-df$Grower <- as.factor(df$Grower)
+df$Grower_Ordinal <- as.factor(df$Grower_Ordinal)
 df$Year <- as.factor(df$Year)
 df$id <- seq.int(nrow(df))
 summary(df)
@@ -16,7 +17,7 @@ colnames(df)
 
 # Estimate T hat
 
-reg1 <- glm(df$Mildew.Incidence~df$Mildew_May+df$Susceptibility.to.R6.Strains+df$Susceptibility.to.nonR6.Strains+df$Initial.Strain+df$Pruning+df$degree_centrality_NonR6_MayJun+df$degree_centrality_NonR6_JunJul+df$Quadrant+df$Grower+df$Year)
+reg1 <- glm(df$Mildew.Incidence~df$Mildew_May+df$Susceptibility.to.R6.Strains+df$Susceptibility.to.nonR6.Strains+df$Initial.Strain+df$Pruning+df$degree_centrality_NonR6_MayJun+df$degree_centrality_NonR6_JunJul+df$Quadrant+df$Grower_Ordinal+df$Year)
 summary(reg1)
 df$T.hat <- predict(reg1)
 
@@ -24,7 +25,7 @@ df$T.hat <- predict(reg1)
 
 pseudo_pop <- generate_pseudo_pop(
   df[, c("id", "T.hat")],
-  df[, c("id", "Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_JunJul", "Quadrant", "Grower", "Year", "FlagShoot_Incidence", "Mildew_Apr", "Mildew_May", "Mildew_Jun", "Mildew_Jul", "degree_centrality_R6_MayJun", "degree_centrality_R6_JunJul")],
+  df[, c("id", "Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_JunJul", "Quadrant", "Grower_Ordinal", "Year", "FlagShoot_Incidence", "Mildew_Apr", "Mildew_May", "Mildew_Jun", "Mildew_Jul", "degree_centrality_R6_MayJun", "degree_centrality_R6_JunJul")],
   ci_appr = "weighting",
   gps_density = "kernel",
   use_cov_transform = TRUE,
@@ -52,7 +53,7 @@ dev.off()
 
 # Estimating GPS
 data_with_gps <- estimate_gps(w = pseudo_pop$pseudo_pop[, c("id", "T.hat")],
-                              c = pseudo_pop$pseudo_pop[, c("id","Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_JunJul", "Quadrant", "Grower", "Year")],
+                              c = pseudo_pop$pseudo_pop[, c("id","Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_JunJul", "Quadrant", "Grower_Ordinal", "Year")],
                               params = list(xgb_max_depth = c(3,4,5),
                                             xgb_rounds = c(10,20,30,40)),
                               nthread = 1,                                
