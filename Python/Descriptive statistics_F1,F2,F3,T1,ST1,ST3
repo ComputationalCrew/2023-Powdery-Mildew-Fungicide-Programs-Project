@@ -118,7 +118,7 @@ print('Degrees of Freedom:', df)
 ### Figure 1. CATE histogram with box plots
 
 # prediction variable: Annual costs
-# prediction1 variable: Yearly constituents
+# prediction1 variable: Active constituents
 
 import numpy as np
 from matplotlib import pyplot as plt
