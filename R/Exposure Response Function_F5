@@ -53,7 +53,7 @@ dev.off()
 
 # Estimating GPS
 data_with_gps <- estimate_gps(w = pseudo_pop$pseudo_pop[, c("id", "T.hat")],
-                              c = pseudo_pop$pseudo_pop[, c("id","Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "degree_centrality_NonR6_MayJun", "degree_centrality_NonR6_JunJul", "Quadrant", "Grower_Ordinal", "Year")],
+                              c = pseudo_pop$pseudo_pop[, c("id","Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "Quadrant", "Grower_Ordinal", "Year", "Mildew_May")],
                               params = list(xgb_max_depth = c(3,4,5),
                                             xgb_rounds = c(10,20,30,40)),
                               nthread = 1,                                
