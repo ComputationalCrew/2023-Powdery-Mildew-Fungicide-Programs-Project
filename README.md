@@ -7,31 +7,31 @@ The data files provided include the following variables.
 
 ### Clean Data_Random Forest_V1.csv
 
-Year: Classification variable for year of observation, 2014 to 2017
+Year: Classification variable for year of observation, 2014 to 2017.
 
 Field_ID: A unique identifier for each hop yard within each year. 
 
-Quadrant: A classification variable denoting which quadrant in the landscape each hop yard (Field_ID) was located within relative to the centroid of all yards. Values are SE, SW, NE, NW based
+Quadrant: A classification variable denoting which quadrant in the landscape each hop yard (Field_ID) was located within relative to the centroid of all yards. Values are SE, SW, NE, NW based.
 
-Mildew_Apr: Incidence of plants with powdery mildew in April
+Mildew_Apr: Incidence of plants with powdery mildew in April.
 
-Mildew_May: Incidence of plants with powdery mildew in May
+Mildew_May: Incidence of plants with powdery mildew in May.
 
-Mildew_Jun: Incidence of plants with powdery mildew in June
+Mildew_Jun: Incidence of plants with powdery mildew in June.
 
-Mildew_Jul: Incidence of plants with powdery mildew in July
+Mildew_Jul: Incidence of plants with powdery mildew in July.
 
-Mildew_Apr_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Apr variable
+Mildew_Apr_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Apr variable.
 
-Mildew_May_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_May variable
+Mildew_May_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_May variable.
 
-Mildew_Jun_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Jun variable
+Mildew_Jun_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Jun variable.
 
-Mildew_Jul_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Jul variable
+Mildew_Jul_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Jul variable.
 
-Mildew_Incidence: Seasonal mean incidence of plants with powdery mildew
+Mildew_Incidence: Seasonal mean incidence of plants with powdery mildew.
 
-Mildew_Incidence_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Incidence variable
+Mildew_Incidence_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Incidence variable.
 
 Susceptibility_to_R6_Strains: Each cultivar an ordinal score for its susceptibility to pathogenic races of P. macularis: Vb,V3,V4,V5,V6. 
 
@@ -45,9 +45,9 @@ FlagShoot_Incidence: Seasonal mean incidence of bud infection which might cause 
 
 FlagShoot_Incidence_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of FlagShoot_Incidence variable.
 
-Active_Constituents: Annual number of fungicide active constituents applied by growers in a given year.
+Active_Constituents: Annual number of pesticide active constituents applied for suppression of powdery mildew by Oregon hop growers during 2014 to 2017.
 
-Annual_Cost: Annual estimated cost of fungicide active constituents.
+Annual_Cost: Annual costs of pesticides applied for suppression of powdery mildew by Oregon hop growers during 2014 to 2017..
 
 degree_centrality_R6_MayJun: Outward degree centrality calculated for monthly time transitions from May to June for each network of yards planted to cultivars that possess R6.
 
@@ -104,3 +104,31 @@ Mildew Incidence_Dummy: A dummy variable coded as Detected or Not Detected to re
 ATE: average treatment effect for annual costs from generalized random forests.
 
 ATE1: average treatment effect for active constituents from generalized random forests.
+
+### Constituents_quadrant.csv
+
+Quadrant: A classification variable denoting which quadrant in the landscape each hop yard (Field_ID) was located within relative to the centroid of all yards. Values are SE, NE, NW based.
+
+predictions1: Predicted value for active constituents from generalized random forests.
+
+### Cost_quadrant.csv
+
+Quadrant: A classification variable denoting which quadrant in the landscape each hop yard (Field_ID) was located within relative to the centroid of all yards. Values are SE, NE, NW based.
+
+predictions: Predicted value for annual costs from generalized random forests.
+
+### ViolinPlot.csv
+
+Field_ID: A unique identifier for each hop yard within each year.
+
+Year: Classification variable for year of observation, 2014 to 2017.
+
+Month: Classification variable for month of observation, March to August
+
+Monthly_constituents: Monthly number of pesticide active constituents applied for suppression of powdery mildew by Oregon hop growers during 2014 to 2017.
+
+YearlyCon: Annual number of pesticide active constituents applied for suppression of powdery mildew by Oregon hop growers during 2014 to 2017.
+
+Monthly_Cost: Monthly costs of pesticides applied for suppression of powdery mildew by Oregon hop growers during 2014 to 2017.
+
+Annual_Cost: Annual costs of pesticides applied for suppression of powdery mildew by Oregon hop growers during 2014 to 2017.
