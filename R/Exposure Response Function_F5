@@ -6,7 +6,7 @@ library("CausalGPS")
 library(ggplot2)
 
 # Data
-df <- read.csv(".../Clean Data_Random Forest_GPS.csv")
+df <- read.csv(".../Clean Data_Random Forest_V1.csv")
 
 df$Quadrant <- as.factor(df$Quadrant)
 df$Grower_Ordinal <- as.factor(df$Grower_Ordinal)
