@@ -17,7 +17,7 @@ colnames(df)
 
 # Estimate T hat
 
-reg1 <- glm(df$Mildew.Incidence~df$Mildew_May+df$Susceptibility.to.R6.Strains+df$Susceptibility.to.nonR6.Strains+df$Initial.Strain+df$Pruning+df$Quadrant+df$Grower_Ordinal+df$Year)
+reg1 <- glm(df$Mildew_Incidence~df$Mildew_May+df$Susceptibility_to_R6_Strains+df$Susceptibility_to_nonR6_Strains+df$Initial_Strain+df$Pruning+df$Quadrant+df$Grower_Ordinal+df$Year)
 summary(reg1)
 df$T.hat <- predict(reg1)
 
@@ -25,7 +25,7 @@ df$T.hat <- predict(reg1)
 
 pseudo_pop <- generate_pseudo_pop(
   df[, c("id", "T.hat")],
-  df[, c("id", "Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "Quadrant", "Grower_Ordinal", "Year", "Mildew_May")],
+  df[, c("id", "Susceptibility_to_R6_Strains" , "Susceptibility_to_nonR6_Strains", "Initial_Strain", "Pruning", "Quadrant", "Grower_Ordinal", "Year", "Mildew_May")],
   ci_appr = "weighting",
   gps_density = "kernel",
   use_cov_transform = TRUE,
@@ -43,7 +43,6 @@ pseudo_pop <- generate_pseudo_pop(
   nthread = 1
   )                            
 
-
 ### Figure 5: Covariate balance plot
 png("pseudo_pop.png", width=6000,height=7000, res=1000)
 plot(pseudo_pop) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
@@ -53,7 +52,7 @@ dev.off()
 
 # Estimating GPS
 data_with_gps <- estimate_gps(w = pseudo_pop$pseudo_pop[, c("id", "T.hat")],
-                              c = pseudo_pop$pseudo_pop[, c("id","Susceptibility.to.R6.Strains" , "Susceptibility.to.nonR6.Strains", "Initial.Strain", "Pruning", "Quadrant", "Grower_Ordinal", "Year", "Mildew_May")],
+                              c = pseudo_pop$pseudo_pop[, c("id", "Susceptibility_to_R6_Strains" , "Susceptibility_to_nonR6_Strains", "Initial_Strain", "Pruning", "Quadrant", "Grower_Ordinal", "Year", "Mildew_May")],
                               params = list(xgb_max_depth = c(3,4,5),
                                             xgb_rounds = c(10,20,30,40)),
                               nthread = 1,                                
