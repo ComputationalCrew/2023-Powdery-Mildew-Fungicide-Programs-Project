@@ -21,17 +21,17 @@ Mildew_Jun: Incidence of plants with powdery mildew in June
 
 Mildew_Jul: Incidence of plants with powdery mildew in July
 
-Mildew_Apr_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_Apr variable
+Mildew_Apr_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Apr variable
 
-Mildew_May_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_May variable
+Mildew_May_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_May variable
 
-Mildew_Jun_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_Jun variable
+Mildew_Jun_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Jun variable
 
-Mildew_Jul_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_Jul variable
+Mildew_Jul_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Jul variable
 
 Mildew_Incidence: Seasonal mean incidence of plants with powdery mildew
 
-Mildew_Incidence_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_Incidence variable
+Mildew_Incidence_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Incidence variable
 
 Susceptibility_to_R6_Strains: Each cultivar an ordinal score for its susceptibility to pathogenic races of P. macularis: Vb,V3,V4,V5,V6. 
 
@@ -43,6 +43,64 @@ Pruning: Thoroughness of spring pruning rated using a 1 to 5 ordinal scale. In t
 
 FlagShoot_Incidence: Seasonal mean incidence of bud infection which might cause shoots emerging from winter dormancy colonized by P. macularis.
 
-FlagShoot_Incidence_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of FlagShoot_Incidence variable
+FlagShoot_Incidence_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of FlagShoot_Incidence variable.
 
-Mildew Incidence_Dummy: A binary variable coded as Detected or Not Detected to represent the presence or absence of Mildew_Incidence variable for generalized propensity score
+Active_Constituents: Annual number of fungicide active constituents applied by growers in a given year.
+
+Annual_Cost: Annual estimated cost of fungicide active constituents.
+
+degree_centrality_R6_MayJun: Outward degree centrality calculated for monthly time transitions from May to June for each network of yards planted to cultivars that possess R6.
+
+degree_centrality_NonR6_MayJun: Outward degree centrality calculated for monthly time transitions from May to June for each network of yards planted to cultivars that do not possess R6.
+
+degree_centrality_R6_JunJul: Outward degree centrality calculated for monthly time transitions from June to July for each network of yards planted to cultivars that possess R6.
+
+degree_centrality_NonR6_JunJul: Outward degree centrality calculated for monthly time transitions from June to July for each network of yards planted to cultivars that do not possess R6.
+
+Grower_1: A dummy variable coded as 1 or 0 whether Grower 1.
+
+Grower_2: A dummy variable coded as 1 or 0 whether Grower 2.
+
+Grower_3: A dummy variable coded as 1 or 0 whether Grower 3.
+
+Grower_4: A dummy variable coded as 1 or 0 whether Grower 4.
+
+Grower_5: A dummy variable coded as 1 or 0 whether Grower 5.
+
+Grower_6: A dummy variable coded as 1 or 0 whether Grower 6.
+
+Grower_7: A dummy variable coded as 1 or 0 whether Grower 7.
+
+Grower_8: A dummy variable coded as 1 or 0 whether Grower 8.
+
+Grower_9: A dummy variable coded as 1 or 0 whether Grower 9.
+
+YearDummy_2014: A dummy variable coded as 1 or 0 whether year 2014.
+
+YearDummy_2015: A dummy variable coded as 1 or 0 whether year 2015.
+
+YearDummy_2016: A dummy variable coded as 1 or 0 whether year 2016.
+
+YearDummy_2017: A dummy variable coded as 1 or 0 whether year 2017.
+
+NE: A dummy variable coded as 1 or 0 to represent a farm in the northeast region by definition of quadrant.
+
+NW: A dummy variable coded as 1 or 0 to represent a farm in the northwest region by definition of quadrant.
+
+SW: A dummy variable coded as 1 or 0 to represent a farm in the southwest region by definition of quadrant.
+
+SE: A dummy variable coded as 1 or 0 to represent a farm in the southeast region by definition of quadrant.
+
+Grower_Ordinal: Classification variable for grower of observation.
+
+predictions: Predicted value for annual costs from generalized random forests.
+
+predictions1: Predicted value for active constituents from generalized random forests.
+
+GPS: generalized propensity score for a selected variable.
+
+Mildew Incidence_Dummy: A dummy variable coded as Detected or Not Detected to represent the presence or absence of Mildew_Incidence variable for generalized propensity score.
+
+ATE: average treatment effect for annual costs from generalized random forests.
+
+ATE1: average treatment effect for active constituents from generalized random forests.
