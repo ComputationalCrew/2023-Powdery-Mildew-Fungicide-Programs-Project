@@ -20,3 +20,15 @@ Mildew_May: Incidence of plants with powdery mildew in May
 Mildew_Jun: Incidence of plants with powdery mildew in June
 
 Mildew_Jul: Incidence of plants with powdery mildew in July
+
+Mildew_Apr_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_Apr variable
+
+Mildew_May_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_May variable
+
+Mildew_Jun_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_Jun variable
+
+Mildew_Jul_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_Jul variable
+
+Mildew_Incidence: Seasonal mean incidence of plants with powdery mildew
+
+Mildew_Incidence_Dummy: A binary variable coded as 1 or 0 to represent the presence or absence of Mildew_Incidence variable
