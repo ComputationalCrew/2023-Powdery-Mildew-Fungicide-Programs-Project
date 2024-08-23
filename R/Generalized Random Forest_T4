@@ -14,7 +14,7 @@ n <- nrow(data)
 describe(data)
 
 # Covariates
-covariates <- c("Mildew_Apr_Dummy", "FlagShoot_Incidence", "Mildew_Jun_Dummy", "Mildew_Jul_Dummy",
+covariates <- c("Mildew_Apr", "Mildew_May", "Mildew_Jun", "Mildew_Jul", "Mildew_Incidence", "FlagShoot_Incidence",
                  "Susceptibility_to_R6_Strains", "Susceptibility_to_nonR6_Strains", 
                  "Initial_strain",  "Pruning", "Grower_1","Grower_2","Grower_3","Grower_4", 
                  "Grower_5","Grower_6","Grower_7", "Grower_8","Grower_9",
