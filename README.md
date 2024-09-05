@@ -33,11 +33,11 @@ Mildew_Incidence: Seasonal mean incidence of plants with powdery mildew.
 
 Mildew_Incidence_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of Mildew_Incidence variable.
 
-Susceptibility_to_R6_Strains: Each cultivar an ordinal score for its susceptibility to pathogenic races of P. macularis: Vb,V3,V4,V5,V6. 
+Susceptibility_to_R6_Strains: Each cultivar an ordinal score for its susceptibility to pathogenic races of P. macularis with virulence Vb,V3,V4,V5,V6.
 
-Susceptibility_to_nonR6_Strains: Each cultivar an ordinal score for its non-susceptibility to pathogenic races of P. macularis: Vb,V3,V5. 
+Susceptibility_to_nonR6_Strains: Each cultivar an ordinal score for its non-susceptibility to pathogenic races of P. macularis with virulence Vb,V3,V5.
 
-Initial_Strain: Each hop yard was determined as being virulent or not on cultivars possessing R6. we coded the initial strain as ‘1’ if the pathogen was non-V6-virulent and ‘2’ if the pathogen was V6-virulent. If we could not obtain isolates or virulence data or when powdery mildew did not occur at any level, we coded the initial strain as ‘0’.
+Initial_Strain: The initial strain of P. macularis detected in each hop yard was determined as being virulent or not on cultivars possessing R6. We coded the initial strain as ‘1’ if the pathogen was non-V6-virulent (ie, race Vb,V3,V5) and ‘2’ if the pathogen was V6-virulent (ie, race Vb,V3,V4,V5,V6). If we could not obtain isolates or virulence data or when powdery mildew did not occur at any level, we coded the initial strain as ‘0’.
 
 Pruning: Thoroughness of spring pruning rated using a 1 to 5 ordinal scale. In this ordinal scale, ‘1’ represents the most thorough pruning which removed all green leaves and stems from every plant. Each subsequent point represents an approximation of the incidence of plants with green foliage remaining such that a ‘5’ indicates that >80% of plants had green leaves and shoots remaining after pruning.
 
@@ -45,9 +45,9 @@ FlagShoot_Incidence: Seasonal mean incidence of bud infection which might cause 
 
 FlagShoot_Incidence_Dummy: A dummy variable coded as 1 or 0 to represent the presence or absence of FlagShoot_Incidence variable.
 
-Active_Constituents: Annual number of pesticide active constituents applied for suppression of powdery mildew by Oregon hop growers during 2014 to 2017.
+Active_Constituents: Annual number of pesticide active constituents applied by hop yard and year for suppression of powdery mildew.
 
-Annual_Cost: Annual costs of pesticides applied for suppression of powdery mildew by Oregon hop growers during 2014 to 2017..
+Annual_Cost: Annual costs of pesticides applied by hop yard and year for suppression of powdery mildew. Costs are expressed in real 2022 dollars per hectare.
 
 degree_centrality_R6_MayJun: Outward degree centrality calculated for monthly time transitions from May to June for each network of yards planted to cultivars that possess R6.
 
